@@ -33,6 +33,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     frmVendedorasTb013 vend = new frmVendedorasTb013(this,true);
     frmBoletaTb014 boleto = new frmBoletaTb014(this,true);
     frmOcorrenciaTb015 ocorrencia = new frmOcorrenciaTb015(this,true);
+    FrmFichaConsT019 ficha = new FrmFichaConsT019(this, true);
     /**
      * Creates new form frmPrincipal
      */
@@ -94,6 +95,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuItem11 = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmOcorrencia = new javax.swing.JMenuItem();
+        menuConserto = new javax.swing.JMenu();
+        menuCadFichaConserto = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenuItem16 = new javax.swing.JMenuItem();
 
         jpSeparador.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -188,7 +196,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             jpanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelInferiorLayout.createSequentialGroup()
                 .addComponent(txtUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 557, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
@@ -369,6 +377,31 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jmVendas);
 
+        menuConserto.setText("Conserto");
+
+        menuCadFichaConserto.setText("Cad Ficha Conserto");
+        menuCadFichaConserto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuCadFichaConsertoActionPerformed(evt);
+            }
+        });
+        menuConserto.add(menuCadFichaConserto);
+
+        jMenuItem13.setText("Cad Cliente Loja");
+        menuConserto.add(jMenuItem13);
+        menuConserto.add(jSeparator2);
+
+        jMenuItem14.setText("Consulta Ficha Conserto");
+        menuConserto.add(jMenuItem14);
+
+        jMenuItem15.setText("Consulta Cliente");
+        menuConserto.add(jMenuItem15);
+
+        jMenuItem16.setText("Consulta Produto Loja");
+        menuConserto.add(jMenuItem16);
+
+        jMenuBar1.add(menuConserto);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -401,7 +434,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSair))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUser)
                     .addComponent(txtInserir)
@@ -412,12 +445,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(jpanelInferior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setSize(new java.awt.Dimension(722, 338));
+        setSize(new java.awt.Dimension(969, 538));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFornecedorActionPerformed
-
         int user = (Integer.parseInt(txtUser.getText()));
         query = em.createQuery("SELECT t FROM Tb002acesso t WHERE t.iduser.iduser = :id and t.tbacessotb000.idtabela = 9 ");
         query.setParameter("id", (Integer.parseInt(txtUser.getText())));
@@ -1355,6 +1387,64 @@ public class frmPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jmOcorrenciaActionPerformed
 
+    private void menuCadFichaConsertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadFichaConsertoActionPerformed
+      int user = (Integer.parseInt(txtUser.getText()));
+      
+        query = em.createQuery("SELECT t FROM Tb002acesso t WHERE t.iduser.iduser = :id and t.tbacessotb000.idtabela = 20");
+        query.setParameter("id", (Integer.parseInt(txtUser.getText())));
+        List<Tb002acesso> data = query.getResultList();
+        if (data.size() > 0) {
+            String args[] = new String[4];
+            args[0] = data.get(0).getInseriracesso().toString();
+            args[1] = data.get(0).getEditaracesso().toString();
+            args[2] = data.get(0).getExcluiracesso().toString();
+            args[3] = data.get(0).getConsultaracesso().toString();
+
+            txtInserir.setText(args[0]);
+            txtEditar.setText(args[1]);
+            txtExcluir.setText(args[2]);
+            txtPesquisa.setText(args[3]);
+
+            //Botao Inserir//////////////////////////////////////
+            if (txtInserir.getText().equals("true")) {
+                ficha.btnIncluir.setEnabled(true);
+                //  fornecedor.txtMsg.setText("Com Permissao");
+            } else {
+                ficha.btnIncluir.setEnabled(false);
+                //    fornecedor.txtMsg.setText("Sem Permissao ");
+            }
+            //  Botao Excluir/////////////////////////////////////////
+            if (txtExcluir.getText().equals("true")) {
+                ficha.btnExcluir.setEnabled(true);
+            } else {
+                ficha.btnExcluir.setEnabled(false);
+            }
+            //Botao Salvar - Planilhas/////////////////////////////////
+            if (txtPesquisa.getText().equals("true")) {
+                ficha.btnSalvar.setEnabled(true);
+                //  logado.txtPesq.setEnabled(true);
+                ficha.tbFicha.setEnabled(true);
+            } else {
+                ficha.btnSalvar.setEnabled(false);
+                //   logado.txtPesq.setEnabled(false);
+                ficha.tbFicha.setEnabled(false);
+            }
+            //  Botao Editar/////////////////////////////////////////
+            if (txtEditar.getText().equals("true")) {
+                //   logado.txtPesq.setEnabled(true);
+            } else {
+                ficha.btnExcluir.setEnabled(false);
+            }
+           // loja.btnCancela.doClick();
+            ficha.txtUsuario.setText(txtUser.getText());
+            ficha.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Sem acesso ao modulo!!");
+
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_menuCadFichaConsertoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1409,6 +1499,10 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
@@ -1418,6 +1512,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmOcorrencia;
     private javax.swing.JMenu jmVendas;
     private javax.swing.JPanel jpMenu;
@@ -1425,6 +1520,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     private java.awt.Panel jpanelInferior;
     private java.util.List<com.guina.model.Tb002acesso> list;
     private java.util.List<com.guina.model.Tb009logados> listLogado;
+    private javax.swing.JMenuItem menuCadFichaConserto;
+    private javax.swing.JMenu menuConserto;
     private javax.swing.JMenuItem menuLog;
     private javax.swing.JMenuItem menuLoja;
     private javax.swing.JMenuItem menuVenda;

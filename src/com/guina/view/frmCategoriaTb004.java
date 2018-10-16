@@ -503,7 +503,7 @@ public class frmCategoriaTb004 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-       btnNovoLog.doClick();
+        btnNovoLog.doClick();
         Dados();//Preenche dados
         User();//Pega Usuario
         btnSalvarLog.doClick();//Salva na tabela de log
@@ -537,7 +537,7 @@ public class frmCategoriaTb004 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelaActionPerformed
 
     private void btnInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserirActionPerformed
-          acao = ("Inserir");
+        acao = ("Inserir");
         com.guina.model.Tb004categorias t = new com.guina.model.Tb004categorias();
         em.persist(t);
         list.add(t);

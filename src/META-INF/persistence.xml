@@ -22,6 +22,9 @@
     <class>com.guina.model.Tb016duplicatas</class>
     <class>com.guina.model.Tb017factorings</class>
     <class>com.guina.model.Tb018descontos</class>
+    <class>com.guina.model.Tb020cliLojas</class>
+    <class>com.guina.model.Tb019fichas</class>
+    <class>com.guina.model.Tb021prodLojas</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.3:5432/permissao"/>
       <property name="javax.persistence.jdbc.user" value="postgres"/>

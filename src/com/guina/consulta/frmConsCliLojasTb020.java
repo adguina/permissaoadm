@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package com.guina.consulta;
-import com.guina.model.Tb001user;
-import com.guina.model.Tb011lojas;
+import com.guina.model.Tb020cliLojas;
 import com.guina.uteis.uteis;
 import javax.swing.JOptionPane;
 
@@ -13,15 +12,15 @@ import javax.swing.JOptionPane;
  *
  * @author agnaldo
  */
-public class frmConsLojaTb011 extends javax.swing.JDialog {
+public class frmConsCliLojasTb020 extends javax.swing.JDialog {
 
     private Boolean confirmado = false;
-    private Tb011lojas loja;
+    private Tb020cliLojas cli_loja;
 
     /**
      * Creates new form frmConsSetor
      */
-    public frmConsLojaTb011(java.awt.Frame parent, boolean modal) {
+    public frmConsCliLojasTb020(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -36,12 +35,12 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
         this.confirmado = confirmado;
     }
 
-    public Tb011lojas getLoja() {
-        return loja;
+    public Tb020cliLojas getCli_Loja() {
+        return cli_loja;
     }
 
-    public void setLoja(Tb011lojas loja) {
-        this.loja = loja;
+    public void setLoja(Tb020cliLojas cli_loja) {
+        this.cli_loja = cli_loja;
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -56,10 +55,10 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         em = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("permissaoPU").createEntityManager();
-        query = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb011lojas t");
+        query = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020cliLojas t");
         list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(query.getResultList());
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbLoja = new javax.swing.JTable();
+        tbCliLoja = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         btnVoltar = new javax.swing.JButton();
         btnConfirma = new javax.swing.JButton();
@@ -67,29 +66,29 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
         txtPesquisa = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta Loja");
+        setTitle("Consulta Cliente Loja");
 
-        tbLoja.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
-        tbLoja.setForeground(new java.awt.Color(0, 51, 153));
-        tbLoja.setGridColor(new java.awt.Color(0, 0, 255));
-        tbLoja.setSelectionBackground(java.awt.Color.orange);
-        tbLoja.setSelectionForeground(java.awt.Color.blue);
+        tbCliLoja.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
+        tbCliLoja.setForeground(new java.awt.Color(0, 51, 153));
+        tbCliLoja.setGridColor(new java.awt.Color(0, 0, 255));
+        tbCliLoja.setSelectionBackground(java.awt.Color.orange);
+        tbCliLoja.setSelectionForeground(java.awt.Color.blue);
 
-        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, tbLoja);
-        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idlojas}"));
-        columnBinding.setColumnName("Idlojas");
+        org.jdesktop.swingbinding.JTableBinding jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, list, tbCliLoja);
+        org.jdesktop.swingbinding.JTableBinding.ColumnBinding columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idCliLojas}"));
+        columnBinding.setColumnName("ID");
         columnBinding.setColumnClass(Long.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${descLoja}"));
-        columnBinding.setColumnName("Desc Loja");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nomeCli}"));
+        columnBinding.setColumnName("Cliente");
         columnBinding.setColumnClass(String.class);
         bindingGroup.addBinding(jTableBinding);
         jTableBinding.bind();
-        jScrollPane1.setViewportView(tbLoja);
-        if (tbLoja.getColumnModel().getColumnCount() > 0) {
-            tbLoja.getColumnModel().getColumn(0).setMinWidth(50);
-            tbLoja.getColumnModel().getColumn(0).setMaxWidth(60);
-            tbLoja.getColumnModel().getColumn(1).setMinWidth(150);
-            tbLoja.getColumnModel().getColumn(1).setMaxWidth(200);
+        jScrollPane1.setViewportView(tbCliLoja);
+        if (tbCliLoja.getColumnModel().getColumnCount() > 0) {
+            tbCliLoja.getColumnModel().getColumn(0).setMinWidth(50);
+            tbCliLoja.getColumnModel().getColumn(0).setMaxWidth(60);
+            tbCliLoja.getColumnModel().getColumn(1).setMinWidth(150);
+            tbCliLoja.getColumnModel().getColumn(1).setMaxWidth(200);
         }
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -162,19 +161,19 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnConfirmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmaActionPerformed
-        int ls = tbLoja.getSelectedRow();
+        int ls = tbCliLoja.getSelectedRow();
         if (ls >= 0) {
-            loja = list.get(ls);
+            cli_loja = list.get(ls);
             setConfirmado(true);
             dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione uma Loja !","erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Selecione um Cliente !","erro",JOptionPane.ERROR_MESSAGE);
         }// TODO add your handling code here:
     }//GEN-LAST:event_btnConfirmaActionPerformed
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
         uteis.maiscula(evt);
-        query = em.createQuery("SELECT t FROM Tb011lojas t WHERE t.descLoja like :nome");
+        query = em.createQuery("SELECT t FROM Tb020cliLojas t WHERE t.nomeCli like :nome");
         query.setParameter("nome", "%" + txtPesquisa.getText() + "%");
         list.clear();
         list.addAll(query.getResultList());        // TODO add your handling code here:
@@ -197,14 +196,46 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmConsLojaTb011.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsCliLojasTb020.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmConsLojaTb011.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsCliLojasTb020.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmConsLojaTb011.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsCliLojasTb020.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmConsLojaTb011.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmConsCliLojasTb020.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -241,7 +272,7 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmConsLojaTb011 dialog = new frmConsLojaTb011(new javax.swing.JFrame(), true);
+                frmConsCliLojasTb020 dialog = new frmConsCliLojasTb020(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -260,9 +291,9 @@ public class frmConsLojaTb011 extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private java.util.List<com.guina.model.Tb011lojas> list;
+    private java.util.List<com.guina.model.Tb020cliLojas> list;
     private javax.persistence.Query query;
-    private javax.swing.JTable tbLoja;
+    private javax.swing.JTable tbCliLoja;
     private javax.swing.JTextField txtPesquisa;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables

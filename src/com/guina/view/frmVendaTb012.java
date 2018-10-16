@@ -58,14 +58,6 @@ public class frmVendaTb012 extends javax.swing.JDialog {
         bindingGroup = new org.jdesktop.beansbinding.BindingGroup();
 
         em = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("permissaoPU").createEntityManager();
-        query = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb012vendas t");
-        list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(query.getResultList());
-        queryLoja = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb011lojas t");
-        listLoja = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLoja.getResultList());
-        queryLog = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb010logsistema t");
-        listLog = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLog.getResultList());
-        queryUser = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb001user t");
-        listUser = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryUser.getResultList());
         jpLog = new javax.swing.JPanel();
         txtIdItem = new javax.swing.JTextField();
         txtItem = new javax.swing.JTextField();
@@ -88,6 +80,14 @@ public class frmVendaTb012 extends javax.swing.JDialog {
         btnNovoLog = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtTabela = new javax.swing.JTextField();
+        query = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb012vendas t");
+        list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(query.getResultList());
+        queryLoja = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb011lojas t");
+        listLoja = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLoja.getResultList());
+        queryLog = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb010logsistema t");
+        listLog = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLog.getResultList());
+        queryUser = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb001user t");
+        listUser = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryUser.getResultList());
         jpDados = new javax.swing.JPanel();
         txtValor = new javax.swing.JTextField();
         obsvendaLabel = new javax.swing.JLabel();
@@ -257,7 +257,7 @@ public class frmVendaTb012 extends javax.swing.JDialog {
                                 .addComponent(ITEM)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtIdItem, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 17, Short.MAX_VALUE))
                             .addGroup(jpLogLayout.createSequentialGroup()
                                 .addGroup(jpLogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jpLogLayout.createSequentialGroup()
@@ -927,7 +927,6 @@ public class frmVendaTb012 extends javax.swing.JDialog {
         }
     }
     //funçaõ pega o ultimo id
-
     public void validaId() {
         int id = (Integer.parseInt(txtId.getText()));
         query = em.createQuery("SELECT t FROM Tb012vendas t WHERE t.idvendas = id ");
@@ -956,7 +955,6 @@ public class frmVendaTb012 extends javax.swing.JDialog {
         //Pega nome item
         txtItem.setText(jcLoja.getSelectedItem().toString());
     }
-
     public void User() {
         int user = (Integer.parseInt(txtUsuario.getText()));
         queryUser = em.createQuery("SELECT t FROM Tb001user t WHERE t.iduser = :id ");
