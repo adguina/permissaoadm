@@ -1,0 +1,144 @@
+1- começar a classe com -Mestre Detalhe (Aproveitar modelo classe e deletar o formulario.
+2 - Criar o formulario como JDialog (Modal)
+3 - Criar os campos e vicular a tabela
+Obs : criar o transection para gravar no banco(Abaixo do init components())
+if (!Beans.isDesignTime()) {
+            em.getTransaction().begin();
+        }
+
+4- Criar 02 Strings para capturar nome tabela e tipo de ação para o log
+ //nome da tabela////////
+
+    String tb = "tb004unidades"; //id 5
+    String acao;
+
+/////////////////////////
+
+5 - Criar o formulario de Log
+
+6- Funções para capturar as informações para log
+
+////////////Inicio funçao de log para o sistema///////////////////////////
+    public void Dados() {
+        //Dados para fazerlog
+        Date data = new Date();
+        SimpleDateFormat horaFormatada = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat dataFormatada = new SimpleDateFormat("dd/MM/yyyy");
+        //Pegar a hora
+        txtHora.setText(String.valueOf(horaFormatada.format(data)));
+        //Pegar a Data
+        txtData.setText(String.valueOf(dataFormatada.format(data)));
+        //Pegar tabela
+        txtTabela.setText(tb);
+        //Pega a ação
+        txtAcao.setText(acao);
+        //Pega o item
+        txtIdItem.setText(txtId.getText());
+        //Pega nome item
+        txtItem.setText(txtNome.getText());
+    }
+    
+    //Pega id do usuario e retorna o nome
+
+    public void User() {
+        int user = (Integer.parseInt(txtUsuario.getText()));
+        queryUser = em.createQuery("SELECT t FROM Tb001user t WHERE t.iduser = :id ");
+        queryUser.setParameter("id", (Integer.parseInt(txtUsuario.getText())));
+        List<Tb001user> data = queryUser.getResultList();
+        if (data.size() > 0) {
+            String args[] = new String[1];
+            args[0] = data.get(0).getNomeuser();
+            txtUser.setText(args[0]);
+        }
+    }
+    ////////////Fim funçao de log para osistema///////////////////////////
+
+7- Copiar os componentes da tabela log e usuario para o formulario de Categoria
+
+listLog - queryLog
+listUser - queryUser
+
+8- Vincular os campos do form log com a tabela log
+
+9 - Coloque nome da ação nos botoes
+
+Delete -   acao = ("Excluir");
+Novo  -    acao = ("Inserir"); 
+evento Mouse clicked da tabelaCategoria -   acao = ("Editar");
+
+10 - Coloque algumas açoes extras no botoes
+
+  //Botao Deleta //Salva assim que deleta
+        btnSalvar.doClick();
+
+  //Botao Novo 
+        //Na primeira linha
+        btnNovoLog.doClick();
+        Dados();//Preenche dados
+        User();//Pega Usuario
+        btnSalvarLog.doClick();//Salva na tabela de log
+        btnCancelaLog.doClick();//Atualiza tabela de Log
+        //Na ultima linha
+        btnCancela.doClick();
+
+11- No formulario Principal faz a chamado no menu, com as restriçoes
+Ex : Unidade
+        int user = (Integer.parseInt(txtUser.getText()));
+        query = em.createQuery("SELECT t FROM Tb002acesso t WHERE t.iduser.iduser = :id and t.tbacessotb000.idtabela = 6 ");
+        query.setParameter("id", (Integer.parseInt(txtUser.getText())));
+        List<Tb002acesso> data = query.getResultList();
+        if (data.size() > 0) {
+            String args[] = new String[4];
+            args[0] = data.get(0).getInseriracesso().toString();
+            args[1] = data.get(0).getEditaracesso().toString();
+            args[2] = data.get(0).getExcluiracesso().toString();
+            args[3] = data.get(0).getConsultaracesso().toString();
+
+            txtInserir.setText(args[0]);
+            txtEditar.setText(args[1]);
+            txtExcluir.setText(args[2]);
+            txtPesquisa.setText(args[3]);
+
+            //Botao Inserir//////////////////////////////////////
+            if (txtInserir.getText().equals("true")) {
+                un.btnIncluir.setEnabled(true);
+                //  fornecedor.txtMsg.setText("Com Permissao");
+            } else {
+                un.btnIncluir.setEnabled(false);
+                //    fornecedor.txtMsg.setText("Sem Permissao ");
+            }
+            //  Botao Excluir/////////////////////////////////////////
+            if (txtExcluir.getText().equals("true")) {
+                un.btnExcluir.setEnabled(true);
+            } else {
+                un.btnExcluir.setEnabled(false);
+            }
+            //Botao Salvar - Planilhas/////////////////////////////////
+            if (txtPesquisa.getText().equals("true")) {
+                un.btnSalvar.setEnabled(true);
+                //  logado.txtPesq.setEnabled(true);
+                un.tbUnidade.setEnabled(true);
+            } else {
+                un.btnSalvar.setEnabled(false);
+                //   logado.txtPesq.setEnabled(false);
+                un.tbUnidade.setEnabled(false);
+            }
+            //  Botao Editar/////////////////////////////////////////
+            if (txtEditar.getText().equals("true")) {
+                //   logado.txtPesq.setEnabled(true);
+            } else {
+                un.btnExcluir.setEnabled(false);
+            }
+            un.txtUsuario.setText(txtUser.getText());
+            //marca.btnCancela.doClick();
+            un.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Sem acesso ao modulo!!");
+
+        }                // T
+
+
+
+
+

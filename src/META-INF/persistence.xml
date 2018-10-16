@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="permissaoPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>com.guina.model.Tb008fornecedores</class>
+    <class>com.guina.model.Tb002acesso</class>
+    <class>com.guina.model.Tb001user</class>
+    <class>com.guina.model.Tb00tabelas</class>
+    <class>com.guina.model.Tb009logados</class>
+    <class>com.guina.model.Tb010logsistema</class>
+    <class>com.guina.model.Tb006marcas</class>
+    <class>com.guina.model.Tb005unidades</class>
+    <class>com.guina.model.Tb004categorias</class>
+    <class>com.guina.model.Tb007modelos</class>
+    <class>com.guina.model.Tb003produtos</class>
+    <class>com.guina.model.TbVendas</class>
+    <class>com.guina.model.Tb012vendas</class>
+    <class>com.guina.model.Tb013vendedoras</class>
+    <class>com.guina.model.Tb011lojas</class>
+    <class>com.guina.model.Tb014nboletas</class>
+    <class>com.guina.model.Tb015ocorrencias</class>
+    <class>com.guina.model.Tb016duplicatas</class>
+    <class>com.guina.model.Tb017factorings</class>
+    <class>com.guina.model.Tb018descontos</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://192.168.1.3:5432/permissao"/>
+      <property name="javax.persistence.jdbc.user" value="postgres"/>
+      <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="gui1992+"/>
+    </properties>
+  </persistence-unit>
+</persistence>
