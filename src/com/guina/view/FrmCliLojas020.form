@@ -6,62 +6,34 @@
       <Properties>
         <Property name="persistenceUnit" type="java.lang.String" value="permissaoPU"/>
       </Properties>
-    </Component>
-    <Component class="javax.persistence.Query" name="queryFicha">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT t FROM Tb019fichas t"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="em"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="listFicha">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="queryFicha"/>
-        </Property>
-        <Property name="observable" type="boolean" value="true"/>
-      </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb019fichas&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
     </Component>
-    <Component class="javax.persistence.Query" name="queryLoja">
+    <Component class="javax.persistence.Query" name="queryCliLoja">
       <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT t FROM Tb011lojas t"/>
+        <Property name="query" type="java.lang.String" value="SELECT t FROM Tb020clienteLojas t"/>
         <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
           <ComponentRef name="em"/>
         </Property>
       </Properties>
-    </Component>
-    <Component class="java.util.List" name="listLoja">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="queryLoja"/>
-        </Property>
-        <Property name="observable" type="boolean" value="true"/>
-      </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb011lojas&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
     </Component>
-    <Component class="javax.persistence.Query" name="queryProd">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT t FROM Tb021prodLojas t"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="em"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="listProd">
+    <Component class="java.util.List" name="listCliLoja">
       <Properties>
         <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="queryProd"/>
+          <ComponentRef name="queryCliLoja"/>
         </Property>
         <Property name="observable" type="boolean" value="true"/>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb021prodLojas&gt;"/>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb020clienteLojas&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
     </Component>
     <Component class="javax.persistence.Query" name="queryUser">
@@ -108,24 +80,6 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb010logsistema&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.persistence.Query" name="tb020clienteLojasQuery">
-      <Properties>
-        <Property name="query" type="java.lang.String" value="SELECT t FROM Tb020clienteLojas t"/>
-        <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
-          <ComponentRef name="em"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="java.util.List" name="tb020clienteLojasList">
-      <Properties>
-        <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="tb020clienteLojasQuery"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb020clienteLojas&gt;"/>
-      </AuxValues>
-    </Component>
     <Container class="javax.swing.JPanel" name="jpLog">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -166,7 +120,7 @@
                                   <Component id="ITEM" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="txtIdItem" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -473,10 +427,10 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Cadastro Conserto"/>
+    <Property name="title" type="java.lang.String" value="Cadastro Cliente"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,24,0,0,3,99"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-24,0,0,3,35"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -497,21 +451,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jpDados" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="jpBotoes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel4" min="-2" pref="372" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel5" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAtualiza" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="masterScrollPane" alignment="0" max="32767" attributes="0"/>
-              </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="masterScrollPane" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jpBotoes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jPanel4" max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jpDados" alignment="1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -524,11 +474,9 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jpBotoes" min="-2" max="-2" attributes="0"/>
                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <Component id="jPanel5" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnAtualiza" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-              <Component id="masterScrollPane" pref="229" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="masterScrollPane" pref="218" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -547,88 +495,97 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="datacadastroFichaLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="idCliLojasLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="emailCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="cepCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="txtId" min="-2" pref="81" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="datacadCliLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="txtCep" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="dtCadastro" pref="109" max="32767" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="cidadeCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="celCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ruaCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="nomeCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="txtNome" alignment="1" min="-2" pref="372" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtRua" alignment="0" min="-2" pref="372" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtCel" min="-2" pref="178" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="cpfCliLabel" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtCidade" min="-2" pref="158" max="-2" attributes="0"/>
+                                                      <EmptySpace max="32767" attributes="0"/>
+                                                      <Component id="idUfLabel" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtUf" min="-2" pref="46" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="idUfLabel1" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace max="-2" attributes="0"/>
+                                                      <Component id="jTextField1" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="txtCpf" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <Component id="txtEmail" alignment="0" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="dataretiradaclienteFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dataenviofabricaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dataretornofabricaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="datarecebidolojaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="idFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="bairroCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="telCliLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtId" max="32767" attributes="0"/>
-                              <Component id="dtRetiradaCliente" alignment="0" pref="126" max="32767" attributes="0"/>
-                              <Component id="dtRetornoFabrica" alignment="0" max="32767" attributes="0"/>
-                              <Component id="dtRecebidoLoja" alignment="0" max="32767" attributes="0"/>
-                              <Component id="dtEnvioFab" alignment="0" max="32767" attributes="0"/>
-                              <Component id="dtCadastro" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="idProdutoFkLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jcProduto" min="-2" pref="209" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="statusFichaLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jcStatus" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="precoFichaLabel" min="-2" max="-2" attributes="0"/>
-                                          <Component id="statusFichaSituacaoLabel" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtPreco" max="32767" attributes="0"/>
-                                          <Component id="jcStatusFicha" pref="91" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="codProdFichaLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="txtCodProduto" min="-2" pref="112" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="idLojaFkLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                              <Component id="jcLoja" min="-2" pref="415" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="idClienteFkLabel" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="jcCliente" max="32767" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="txtTel" min="-2" pref="189" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="defeitoFichaLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtDefeitoFicha" min="-2" pref="466" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                                  <Component id="txtBairro" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="439" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -636,296 +593,291 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="idCliLojasLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nomeCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtNome" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="datacadCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Component id="dtCadastro" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtId" alignment="1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="idProdutoFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="statusFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="idFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="cepCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtCep" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="txtRua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ruaCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jcCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="idClienteFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="datacadastroFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="dtCadastro" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="idLojaFkLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataenviofabricaFichaLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="dtEnvioFab" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcLoja" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="bairroCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBairro" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="dtRecebidoLoja" min="-2" max="-2" attributes="0"/>
-                      <Component id="datarecebidolojaFichaLabel" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="precoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="codProdFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="txtCidade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cidadeCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="txtUf" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="idUfLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="idUfLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="dataretornofabricaFichaLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="dtRetornoFabrica" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtCpf" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcStatusFicha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="statusFichaSituacaoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="telCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtTel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="celCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cpfCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="defeitoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDefeitoFicha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dataretiradaclienteFichaLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="dtRetiradaCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="emailCliLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="59" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="idFichaLabel">
+        <Component class="javax.swing.JTextField" name="txtUf">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dataenviofabricaFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Envio Fabrica:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="idProdutoFkLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Produto:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="datacadastroFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Cadastro:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtRecebidoLoja">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.datarecebidolojaFicha}" target="dtRecebidoLoja" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRecebidoLoja" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcLoja">
-          <BindingProperties>
-            <BindingProperty name="elements" source="listLoja" target="jcLoja" targetPath="elements" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idLojaFk}" target="jcLoja" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcLoja" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="datarecebidolojaFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Rec Fabrica:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusFichaSituacaoLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Status F Sit:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dataretiradaclienteFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Rec Loja:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtCadastro">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.datacadastroFicha}" target="dtCadastro" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtCadastro" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcStatusFicha">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="ABERTO"/>
-                <StringItem index="1" value="FECHADO"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <BindingProperties>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.statusFichaSituacao}" target="jcStatusFicha" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcStatusFicha" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Status Ficha:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtEnvioFab">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataenviofabricaFicha}" target="dtEnvioFab" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtEnvioFab" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="idClienteFkLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cliente:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcProduto">
-          <BindingProperties>
-            <BindingProperty name="elements" source="listProd" target="jcProduto" targetPath="elements" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idProdutoFk}" target="jcProduto" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcProduto" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDefeitoFicha">
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.defeitoFicha}" target="txtDefeitoFicha" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtDefeitoFicha" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcCliente">
-          <BindingProperties>
-            <BindingProperty name="elements" source="tb020clienteLojasList" target="jcCliente" targetPath="elements" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idClienteFk}" target="jcCliente" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcCliente" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtId">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="99" red="99" type="rgb"/>
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.idFicha}" target="txtId" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtId" targetPath="enabled" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.idUf}" target="txtUf" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtUf" targetPath="enabled" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtRetiradaCliente">
+        <Component class="com.toedter.calendar.JDateChooser" name="dtCadastro">
           <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataretiradaclienteFicha}" target="dtRetiradaCliente" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRetiradaCliente" targetPath="enabled" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="date" source="tbCliLojas" sourcePath="${selectedElement.datacadCli}" target="dtCadastro" targetPath="date" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="dtCadastro" targetPath="enabled" updateStrategy="0" immediately="false"/>
           </BindingProperties>
         </Component>
-        <Component class="javax.swing.JLabel" name="idLojaFkLabel">
+        <Component class="javax.swing.JLabel" name="idUfLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Loja:"/>
+            <Property name="text" type="java.lang.String" value="UF:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="defeitoFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Defeito Ficha:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcStatus">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="ISENTO"/>
-                <StringItem index="1" value="CUSTO"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <BindingProperties>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.statusFicha}" target="jcStatus" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcStatus" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="precoFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Custo:         R$"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtPreco">
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.precoFicha}" target="txtPreco" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtPreco" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPrecoFocusLost"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dataretornofabricaFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Env Loja:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtRetornoFabrica">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataretornofabricaFicha}" target="dtRetornoFabrica" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRetornoFabrica" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="codProdFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cod Prod Ficha:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtCodProduto">
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.codProdFicha}" target="txtCodProduto" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtCodProduto" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/com/guina/icone/cep.png"/>
+            </Property>
+            <Property name="mnemonic" type="int" value="66"/>
+            <Property name="text" type="java.lang.String" value="&gt;"/>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="jButton1" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
+        <Component class="javax.swing.JLabel" name="bairroCliLabel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
+            <Property name="text" type="java.lang.String" value="BAIRRO"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cidadeCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CIDADE"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtNome">
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.nomeCli}" target="txtNome" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtNome" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeKeyPressed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNomeKeyReleased"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JTextField" name="txtBairro">
           <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="99" type="rgb"/>
+            </Property>
           </Properties>
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.bairroCli}" target="txtBairro" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtBairro" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBairroKeyReleased"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtRua">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="99" type="rgb"/>
+            </Property>
+          </Properties>
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.ruaCli}" target="txtRua" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtRua" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtRuaFocusLost"/>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRuaKeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="nomeCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nome:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cepCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CEP"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="cpfCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CPF"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCep">
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.cepCli}" target="txtCep" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtCep" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+          <Events>
+            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtCepFocusLost"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="emailCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Email:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="datacadCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Data Cad:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="ruaCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="RUA:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtCidade">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="99" red="99" type="rgb"/>
+            </Property>
+          </Properties>
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.cidadeCli}" target="txtCidade" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtCidade" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtCidadeKeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="idCliLojasLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Codigo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtCpf">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="###.###.###-##" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="tbCliLojas" sourcePath="${selectedElement.cpfCli}" target="txtCpf" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtCpf" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtCel">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="(##)#####-####" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="tbCliLojas" sourcePath="${selectedElement.celCli}" target="txtCel" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtCel" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtId">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="cc" red="99" type="rgb"/>
+            </Property>
+          </Properties>
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.idCliLojas}" target="txtId" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtId" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="telCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="TEL:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtEmail">
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.emailCli}" target="txtEmail" targetPath="text" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtEmail" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+          <Events>
+            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtEmailKeyReleased"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="celCliLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CELLULAR:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JFormattedTextField" name="txtTel">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor" preCode="try {" postCode="} catch (java.text.ParseException ex) {&#xa;ex.printStackTrace();&#xa;}">
+              <Format format="(##)####-####" subtype="-1" type="5"/>
+            </Property>
+          </Properties>
+          <BindingProperties>
+            <BindingProperty name="value" source="tbCliLojas" sourcePath="${selectedElement.telCli}" target="txtTel" targetPath="value" updateStrategy="0" immediately="false"/>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="txtTel" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="idUfLabel1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="N.O"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextField1">
+          <BindingProperties>
+            <BindingProperty name="text" source="tbCliLojas" sourcePath="${selectedElement.numeroCli}" target="jTextField1" targetPath="text" updateStrategy="0" immediately="false">
+              <BindingParameter name="javax.swing.binding.ParameterKeys.TEXT_CHANGE_STRATEGY" value="javax.swing.binding.TextChangeStrategy.ON_TYPE"/>
+            </BindingProperty>
+            <BindingProperty name="enabled" source="tbCliLojas" sourcePath="${selectedElement != null}" target="jTextField1" targetPath="enabled" updateStrategy="0" immediately="false"/>
+          </BindingProperties>
         </Component>
       </SubComponents>
     </Container>
@@ -955,24 +907,24 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="btnExcluir">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Delete"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
         <Component class="javax.swing.JButton" name="btnSalvar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSalvarActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnExcluir">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Delete"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExcluirActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
@@ -1000,15 +952,10 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tbFicha">
+        <Component class="javax.swing.JTable" name="tbCliLojas">
           <Properties>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -1081,64 +1028,63 @@
             </Property>
           </Properties>
           <BindingProperties>
-            <BindingProperty name="elements" source="listFicha" target="tbFicha" targetPath="elements" updateStrategy="0" immediately="true">
-              <Subbinding sourcePath="${idFicha}">
-                <BindingParameter name="NAME" value="Registro"/>
+            <BindingProperty name="elements" source="listCliLoja" target="tbCliLojas" targetPath="elements" updateStrategy="0" immediately="true">
+              <Subbinding sourcePath="${idCliLojas}">
+                <BindingParameter name="NAME" value="Codigo"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Long.class"/>
               </Subbinding>
-              <Subbinding sourcePath="${codProdFicha}">
-                <BindingParameter name="NAME" value="Cod Sistema"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${idLojaFk}">
-                <BindingParameter name="NAME" value="Loja"/>
-              </Subbinding>
-              <Subbinding sourcePath="${idProdutoFk}">
-                <BindingParameter name="NAME" value="Produto"/>
-              </Subbinding>
-              <Subbinding sourcePath="${datacadastroFicha}">
-                <BindingParameter name="NAME" value="Data Cadastro"/>
+              <Subbinding sourcePath="${datacadCli}">
+                <BindingParameter name="NAME" value="Data Cad"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
               </Subbinding>
-              <Subbinding sourcePath="${dataenviofabricaFicha}">
-                <BindingParameter name="NAME" value="Data Envio"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${dataretornofabricaFicha}">
-                <BindingParameter name="NAME" value="Data Retorno"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${datarecebidolojaFicha}">
-                <BindingParameter name="NAME" value="Data Rec Loja"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${dataretiradaclienteFicha}">
-                <BindingParameter name="NAME" value="Data Ret Cliente"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${defeitoFicha}">
-                <BindingParameter name="NAME" value="Defeito Ficha"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${statusFichaSituacao}">
-                <BindingParameter name="NAME" value="Status Ficha Situacao"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${idClienteFk}">
+              <Subbinding sourcePath="${nomeCli}">
                 <BindingParameter name="NAME" value="Cliente"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
-              <Subbinding sourcePath="${precoFicha}">
-                <BindingParameter name="NAME" value="Preco Ficha"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
+              <Subbinding sourcePath="${emailCli}">
+                <BindingParameter name="NAME" value="Email"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
-              <Subbinding sourcePath="${statusFicha}">
-                <BindingParameter name="NAME" value="Status Ficha"/>
+              <Subbinding sourcePath="${cepCli}">
+                <BindingParameter name="NAME" value="CEP"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${ruaCli}">
+                <BindingParameter name="NAME" value="Rua"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${numeroCli}">
+                <BindingParameter name="NAME" value="N.O"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${bairroCli}">
+                <BindingParameter name="NAME" value="Bairro"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${cidadeCli}">
+                <BindingParameter name="NAME" value="Cidade"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${idUf}">
+                <BindingParameter name="NAME" value="UF"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${celCli}">
+                <BindingParameter name="NAME" value="Celular"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${telCli}">
+                <BindingParameter name="NAME" value="Telefone"/>
+                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+              </Subbinding>
+              <Subbinding sourcePath="${cpfCli}">
+                <BindingParameter name="NAME" value="CPF"/>
                 <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
               </Subbinding>
             </BindingProperty>
           </BindingProperties>
           <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbFichaMouseClicked"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbCliLojasMouseClicked"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
@@ -1175,43 +1121,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel5">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="1" position="2" title="Codigo.">
-              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
-              </Border>
-            </TitledBorder>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-        <Property name="columns" type="int" value="0"/>
-        <Property name="rows" type="int" value="1"/>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtPesq_id">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesq_idKeyReleased"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="btnAtualiza">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/guina/icone/reload.png"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizaActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>

@@ -34,6 +34,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     frmBoletaTb014 boleto = new frmBoletaTb014(this,true);
     frmOcorrenciaTb015 ocorrencia = new frmOcorrenciaTb015(this,true);
     FrmFichaConsT019 ficha = new FrmFichaConsT019(this, true);
+    FrmCliLojas020 cliente = new FrmCliLojas020(this,true);
     /**
      * Creates new form frmPrincipal
      */
@@ -72,6 +73,9 @@ public class frmPrincipal extends javax.swing.JFrame {
         jpanelInferior = new java.awt.Panel();
         txtUsuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jpConserto = new javax.swing.JPanel();
+        btnFicha = new javax.swing.JButton();
+        btnCli = new javax.swing.JButton();
         btnSair = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -121,6 +125,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         setExtendedState(6);
 
         jpMenu.setBackground(new java.awt.Color(153, 204, 255));
+        jpMenu.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Geral", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         jpMenu.setLayout(new java.awt.GridLayout(1, 0));
 
         btnFornecedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/empresa.png"))); // NOI18N
@@ -196,7 +201,7 @@ public class frmPrincipal extends javax.swing.JFrame {
             jpanelInferiorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpanelInferiorLayout.createSequentialGroup()
                 .addComponent(txtUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 557, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addContainerGap())
         );
@@ -209,6 +214,28 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel2)))
         );
 
+        jpConserto.setBackground(new java.awt.Color(153, 204, 255));
+        jpConserto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Conserto", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jpConserto.setLayout(new java.awt.GridLayout());
+
+        btnFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/ficha.png"))); // NOI18N
+        btnFicha.setText("Ficha");
+        btnFicha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFichaActionPerformed(evt);
+            }
+        });
+        jpConserto.add(btnFicha);
+
+        btnCli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/cli.png"))); // NOI18N
+        btnCli.setText("Cliente");
+        btnCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCliActionPerformed(evt);
+            }
+        });
+        jpConserto.add(btnCli);
+
         btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/sair.jpeg"))); // NOI18N
         btnSair.setToolTipText("Sair Sistema");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -216,6 +243,7 @@ public class frmPrincipal extends javax.swing.JFrame {
                 btnSairActionPerformed(evt);
             }
         });
+        jpConserto.add(btnSair);
 
         jMenu1.setText("Cadastros");
 
@@ -379,6 +407,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         menuConserto.setText("Conserto");
 
+        menuCadFichaConserto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/ficha.png"))); // NOI18N
         menuCadFichaConserto.setText("Cad Ficha Conserto");
         menuCadFichaConserto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -387,7 +416,13 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         menuConserto.add(menuCadFichaConserto);
 
+        jMenuItem13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/cli.png"))); // NOI18N
         jMenuItem13.setText("Cad Cliente Loja");
+        jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem13ActionPerformed(evt);
+            }
+        });
         menuConserto.add(jMenuItem13);
         menuConserto.add(jSeparator2);
 
@@ -422,10 +457,10 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addComponent(txtPesquisa)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jpMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jpConserto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(301, 301, 301))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,8 +468,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSair))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 382, Short.MAX_VALUE)
+                    .addComponent(jpConserto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtUser)
                     .addComponent(txtInserir)
@@ -1388,7 +1423,68 @@ public class frmPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jmOcorrenciaActionPerformed
 
     private void menuCadFichaConsertoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadFichaConsertoActionPerformed
-      int user = (Integer.parseInt(txtUser.getText()));
+       btnFicha.doClick();
+    }//GEN-LAST:event_menuCadFichaConsertoActionPerformed
+
+    private void btnCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCliActionPerformed
+        int user = (Integer.parseInt(txtUser.getText()));
+        query = em.createQuery("SELECT t FROM Tb002acesso t WHERE t.iduser.iduser = :id and t.tbacessotb000.idtabela = 26");
+        query.setParameter("id", (Integer.parseInt(txtUser.getText())));
+        List<Tb002acesso> data = query.getResultList();
+        if (data.size() > 0) {
+            String args[] = new String[4];
+            args[0] = data.get(0).getInseriracesso().toString();
+            args[1] = data.get(0).getEditaracesso().toString();
+            args[2] = data.get(0).getExcluiracesso().toString();
+            args[3] = data.get(0).getConsultaracesso().toString();
+
+            txtInserir.setText(args[0]);
+            txtEditar.setText(args[1]);
+            txtExcluir.setText(args[2]);
+            txtPesquisa.setText(args[3]);
+
+            //Botao Inserir//////////////////////////////////////
+            if (txtInserir.getText().equals("true")) {
+                cliente.btnIncluir.setEnabled(true);
+                //  fornecedor.txtMsg.setText("Com Permissao");
+            } else {
+                cliente.btnIncluir.setEnabled(false);
+                //    fornecedor.txtMsg.setText("Sem Permissao ");
+            }
+            //  Botao Excluir/////////////////////////////////////////
+            if (txtExcluir.getText().equals("true")) {
+                cliente.btnExcluir.setEnabled(true);
+            } else {
+                cliente.btnExcluir.setEnabled(false);
+            }
+            //Botao Salvar - Planilhas/////////////////////////////////
+            if (txtPesquisa.getText().equals("true")) {
+                cliente.btnSalvar.setEnabled(true);
+                //  logado.txtPesq.setEnabled(true);
+                cliente.tbCliLojas.setEnabled(true);
+            } else {
+                cliente.btnSalvar.setEnabled(false);
+                //   logado.txtPesq.setEnabled(false);
+                cliente.tbCliLojas.setEnabled(false);
+            }
+            //  Botao Editar/////////////////////////////////////////
+            if (txtEditar.getText().equals("true")) {
+                //   logado.txtPesq.setEnabled(true);
+            } else {
+                cliente.btnExcluir.setEnabled(false);
+            }
+           // loja.btnCancela.doClick();
+            cliente.txtUsuario.setText(txtUser.getText());
+            cliente.setVisible(true);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Sem acesso ao modulo!!");
+
+        }           // TODO add your handling code here:
+    }//GEN-LAST:event_btnCliActionPerformed
+
+    private void btnFichaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFichaActionPerformed
+        int user = (Integer.parseInt(txtUser.getText()));
       
         query = em.createQuery("SELECT t FROM Tb002acesso t WHERE t.iduser.iduser = :id and t.tbacessotb000.idtabela = 20");
         query.setParameter("id", (Integer.parseInt(txtUser.getText())));
@@ -1442,8 +1538,12 @@ public class frmPrincipal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Sem acesso ao modulo!!");
 
-        }        // TODO add your handling code here:
-    }//GEN-LAST:event_menuCadFichaConsertoActionPerformed
+        }               // TODO add your handling code here:
+    }//GEN-LAST:event_btnFichaActionPerformed
+
+    private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+      btnCli.doClick();        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem13ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1486,6 +1586,8 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAcesso;
+    private javax.swing.JButton btnCli;
+    private javax.swing.JButton btnFicha;
     private javax.swing.JButton btnFornecedor;
     private javax.swing.JButton btnLogof;
     private javax.swing.JButton btnSair;
@@ -1515,6 +1617,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmOcorrencia;
     private javax.swing.JMenu jmVendas;
+    private javax.swing.JPanel jpConserto;
     private javax.swing.JPanel jpMenu;
     private javax.swing.JPanel jpSeparador;
     private java.awt.Panel jpanelInferior;

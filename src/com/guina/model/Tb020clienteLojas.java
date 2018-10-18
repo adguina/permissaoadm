@@ -13,10 +13,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -27,22 +25,23 @@ import javax.persistence.Transient;
  * @author Agnaldo
  */
 @Entity
-@Table(name = "tb020cli_lojas", catalog = "permissao", schema = "public")
+@Table(name = "tb020cliente_lojas", catalog = "permissao", schema = "public")
 @NamedQueries({
-    @NamedQuery(name = "Tb020cliLojas.findAll", query = "SELECT t FROM Tb020cliLojas t")
-    , @NamedQuery(name = "Tb020cliLojas.findByIdCliLojas", query = "SELECT t FROM Tb020cliLojas t WHERE t.idCliLojas = :idCliLojas")
-    , @NamedQuery(name = "Tb020cliLojas.findByNomeCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.nomeCli = :nomeCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByCepCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.cepCli = :cepCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByRuaCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.ruaCli = :ruaCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByBairroCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.bairroCli = :bairroCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByCidadeCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.cidadeCli = :cidadeCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByTelCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.telCli = :telCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByCelCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.celCli = :celCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByEmailCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.emailCli = :emailCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByCpfCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.cpfCli = :cpfCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByDatacadCli", query = "SELECT t FROM Tb020cliLojas t WHERE t.datacadCli = :datacadCli")
-    , @NamedQuery(name = "Tb020cliLojas.findByIdUf", query = "SELECT t FROM Tb020cliLojas t WHERE t.idUf = :idUf")})
-public class Tb020cliLojas implements Serializable {
+    @NamedQuery(name = "Tb020clienteLojas.findAll", query = "SELECT t FROM Tb020clienteLojas t")
+    , @NamedQuery(name = "Tb020clienteLojas.findByIdCliLojas", query = "SELECT t FROM Tb020clienteLojas t WHERE t.idCliLojas = :idCliLojas")
+    , @NamedQuery(name = "Tb020clienteLojas.findByNomeCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.nomeCli = :nomeCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByCepCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.cepCli = :cepCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByRuaCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.ruaCli = :ruaCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByBairroCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.bairroCli = :bairroCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByCidadeCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.cidadeCli = :cidadeCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByTelCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.telCli = :telCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByCelCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.celCli = :celCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByEmailCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.emailCli = :emailCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByCpfCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.cpfCli = :cpfCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByDatacadCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.datacadCli = :datacadCli")
+    , @NamedQuery(name = "Tb020clienteLojas.findByIdUf", query = "SELECT t FROM Tb020clienteLojas t WHERE t.idUf = :idUf")
+    , @NamedQuery(name = "Tb020clienteLojas.findByNumeroCli", query = "SELECT t FROM Tb020clienteLojas t WHERE t.numeroCli = :numeroCli")})
+public class Tb020clienteLojas implements Serializable {
 
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -73,15 +72,15 @@ public class Tb020cliLojas implements Serializable {
     @Column(name = "datacad_cli")
     @Temporal(TemporalType.DATE)
     private Date datacadCli;
-    
-    @OneToOne
-    @JoinColumn(name = "id_uf")
-    private Tb023ufs idUf;
+    @Column(name = "id_uf")
+    private String idUf;
+    @Column(name = "numero_cli")
+    private String numeroCli;
 
-    public Tb020cliLojas() {
+    public Tb020clienteLojas() {
     }
 
-    public Tb020cliLojas(Long idCliLojas) {
+    public Tb020clienteLojas(Long idCliLojas) {
         this.idCliLojas = idCliLojas;
     }
 
@@ -195,14 +194,24 @@ public class Tb020cliLojas implements Serializable {
         changeSupport.firePropertyChange("datacadCli", oldDatacadCli, datacadCli);
     }
 
-    public Tb023ufs getIdUf() {
+    public String getIdUf() {
         return idUf;
     }
 
-    public void setIdUf(Tb023ufs idUf) {
-        Tb023ufs oldIdUf = this.idUf;
+    public void setIdUf(String idUf) {
+        String oldIdUf = this.idUf;
         this.idUf = idUf;
         changeSupport.firePropertyChange("idUf", oldIdUf, idUf);
+    }
+
+    public String getNumeroCli() {
+        return numeroCli;
+    }
+
+    public void setNumeroCli(String numeroCli) {
+        String oldNumeroCli = this.numeroCli;
+        this.numeroCli = numeroCli;
+        changeSupport.firePropertyChange("numeroCli", oldNumeroCli, numeroCli);
     }
 
     @Override
@@ -215,10 +224,10 @@ public class Tb020cliLojas implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tb020cliLojas)) {
+        if (!(object instanceof Tb020clienteLojas)) {
             return false;
         }
-        Tb020cliLojas other = (Tb020cliLojas) object;
+        Tb020clienteLojas other = (Tb020clienteLojas) object;
         if ((this.idCliLojas == null && other.idCliLojas != null) || (this.idCliLojas != null && !this.idCliLojas.equals(other.idCliLojas))) {
             return false;
         }
@@ -229,7 +238,6 @@ public class Tb020cliLojas implements Serializable {
     public String toString() {
         return this.nomeCli;
     }
-
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         changeSupport.addPropertyChangeListener(listener);
     }

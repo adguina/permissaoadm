@@ -86,8 +86,8 @@ public class frmConsProd021 extends javax.swing.JDialog {
         jTableBinding.bind();
         jScrollPane1.setViewportView(tbProdLoja);
         if (tbProdLoja.getColumnModel().getColumnCount() > 0) {
-            tbProdLoja.getColumnModel().getColumn(0).setMinWidth(50);
-            tbProdLoja.getColumnModel().getColumn(0).setMaxWidth(60);
+            tbProdLoja.getColumnModel().getColumn(0).setMinWidth(100);
+            tbProdLoja.getColumnModel().getColumn(0).setMaxWidth(100);
             tbProdLoja.getColumnModel().getColumn(1).setMinWidth(150);
             tbProdLoja.getColumnModel().getColumn(1).setMaxWidth(200);
         }
@@ -132,11 +132,12 @@ public class frmConsProd021 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 176, Short.MAX_VALUE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +153,7 @@ public class frmConsProd021 extends javax.swing.JDialog {
 
         bindingGroup.bind();
 
-        setSize(new java.awt.Dimension(335, 237));
+        setSize(new java.awt.Dimension(398, 237));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

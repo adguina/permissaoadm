@@ -77,7 +77,7 @@ public class Tb019fichas implements Serializable {
     
     @OneToOne
     @JoinColumn(name = "id_cliente_fk")
-    private Tb020cliLojas idClienteFk;
+    private Tb020clienteLojas idClienteFk;
     
     @OneToOne
     @JoinColumn(name = "id_produto_fk")
@@ -174,12 +174,12 @@ public class Tb019fichas implements Serializable {
         changeSupport.firePropertyChange("precoFicha", oldPrecoFicha, precoFicha);
     }
 
-    public Tb020cliLojas getIdClienteFk() {
+    public Tb020clienteLojas getIdClienteFk() {
         return idClienteFk;
     }
 
-    public void setIdClienteFk(Tb020cliLojas idClienteFk) {
-        Tb020cliLojas oldIdClienteFk = this.idClienteFk;
+    public void setIdClienteFk(Tb020clienteLojas idClienteFk) {
+        Tb020clienteLojas oldIdClienteFk = this.idClienteFk;
         this.idClienteFk = idClienteFk;
         changeSupport.firePropertyChange("idClienteFk", oldIdClienteFk, idClienteFk);
     }

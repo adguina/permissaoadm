@@ -5,21 +5,18 @@
  */
 package com.guina.view;
 
-import com.guina.consulta.frmConsCliLojasTb020;
+import com.guina.consulta.frmConsClienteLojasTb020;
 import com.guina.consulta.frmConsLojaTb011;
 import com.guina.consulta.frmConsProd021;
 import com.guina.model.Tb001user;
-import com.guina.model.Tb010logsistema;
 import com.guina.model.Tb011lojas;
-import com.guina.model.Tb012vendas;
-import com.guina.model.Tb013vendedoras;
 import com.guina.model.Tb019fichas;
-import com.guina.model.Tb020cliLojas;
+import com.guina.model.Tb020clienteLojas;
 import com.guina.model.Tb021prodLojas;
+import com.guina.uteis.uteis;
 import java.beans.Beans;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.RollbackException;
@@ -34,10 +31,11 @@ import javax.swing.table.TableRowSorter;
  * @author Agnaldo
  */
 public class FrmFichaConsT019 extends javax.swing.JDialog {
- //////nome da tabela////////
+    //////nome da tabela////////
     String tb = "tb019fichas";
     String acao, aux;// aux variavel da funcao Id
     int n, novo; // variavel da funcao Id
+
     /**
      * Creates new form FrmFichaConsT019
      */
@@ -47,7 +45,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         if (!Beans.isDesignTime()) {
             em.getTransaction().begin();
         }
-          //COLOCAR BARRA HORIZONTAL - TABELA ITENS
+        //COLOCAR BARRA HORIZONTAL - TABELA ITENS
         tbFicha.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         //ORGANIZAR TABELA MODO CRESCENTE OU DECRESCENTE - TABELA DE ITENS
         TableModel modelo = (TableModel) tbFicha.getModel();
@@ -69,14 +67,14 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         listFicha = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryFicha.getResultList());
         queryLoja = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb011lojas t");
         listLoja = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLoja.getResultList());
-        queryCliLoja = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020cliLojas t");
-        listCliLoja = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryCliLoja.getResultList());
         queryProd = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb021prodLojas t");
         listProd = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryProd.getResultList());
         queryUser = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb001user t");
         listUser = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryUser.getResultList());
         queryLog = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb010logsistema t");
         listLog = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLog.getResultList());
+        tb020clienteLojasQuery = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020clienteLojas t");
+        tb020clienteLojasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : tb020clienteLojasQuery.getResultList();
         jpLog = new javax.swing.JPanel();
         txtIdItem = new javax.swing.JTextField();
         txtItem = new javax.swing.JTextField();
@@ -138,6 +136,11 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         btnCancela = new javax.swing.JButton();
         masterScrollPane = new javax.swing.JScrollPane();
         tbFicha = new javax.swing.JTable();
+        jPanel4 = new javax.swing.JPanel();
+        txtPesq = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        txtPesq_id = new javax.swing.JTextField();
+        btnAtualiza = new javax.swing.JButton();
 
         jpLog.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Log"));
 
@@ -403,7 +406,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), txtDefeitoFicha, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listCliLoja, jcCliente);
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tb020clienteLojasList, jcCliente);
         bindingGroup.addBinding(jComboBoxBinding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.idClienteFk}"), jcCliente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -434,12 +437,18 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcStatus, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        precoFichaLabel.setText("Preco Ficha:");
+        precoFichaLabel.setText("Custo:         R$");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.precoFicha}"), txtPreco, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), txtPreco, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
+
+        txtPreco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtPrecoFocusLost(evt);
+            }
+        });
 
         dataretornofabricaFichaLabel.setText("Data Env Loja:");
 
@@ -485,7 +494,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosLayout.createSequentialGroup()
                         .addComponent(datacadastroFichaLabel)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jpDadosLayout.createSequentialGroup()
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dataretiradaclienteFichaLabel)
@@ -496,57 +505,55 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtId)
-                            .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
+                            .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                             .addComponent(dtRetornoFabrica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtRecebidoLoja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtEnvioFab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jpDadosLayout.createSequentialGroup()
+                                    .addComponent(idProdutoFkLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jButton2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(statusFichaLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jcStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jpDadosLayout.createSequentialGroup()
+                                    .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(precoFichaLabel)
+                                        .addComponent(statusFichaSituacaoLabel))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(txtPreco)
+                                        .addComponent(jcStatusFicha, 0, 91, Short.MAX_VALUE))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(codProdFichaLabel)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jpDadosLayout.createSequentialGroup()
+                                    .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(jpDadosLayout.createSequentialGroup()
+                                            .addComponent(idLojaFkLabel)
+                                            .addGap(23, 23, 23)
+                                            .addComponent(jcLoja, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jpDadosLayout.createSequentialGroup()
+                                            .addComponent(idClienteFkLabel)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                            .addComponent(jcCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButton1)
+                                        .addComponent(jButton3))))
                             .addGroup(jpDadosLayout.createSequentialGroup()
                                 .addComponent(defeitoFichaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtDefeitoFicha))
-                            .addGroup(jpDadosLayout.createSequentialGroup()
-                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jpDadosLayout.createSequentialGroup()
-                                        .addComponent(idProdutoFkLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(statusFichaLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jcStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jpDadosLayout.createSequentialGroup()
-                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(precoFichaLabel)
-                                            .addComponent(statusFichaSituacaoLabel))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtPreco)
-                                            .addComponent(jcStatusFicha, 0, 91, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(codProdFichaLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpDadosLayout.createSequentialGroup()
-                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jpDadosLayout.createSequentialGroup()
-                                                .addComponent(idLojaFkLabel)
-                                                .addGap(23, 23, 23)
-                                                .addComponent(jcLoja, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(jpDadosLayout.createSequentialGroup()
-                                                .addComponent(idClienteFkLabel)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jcCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jButton1)
-                                            .addComponent(jButton3))))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtDefeitoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18))))
         );
         jpDadosLayout.setVerticalGroup(
             jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,14 +561,15 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpDadosLayout.createSequentialGroup()
-                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idProdutoFkLabel)
-                            .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(statusFichaLabel)
-                            .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(idFichaLabel)
-                            .addComponent(jButton2))
+                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(idProdutoFkLabel)
+                                .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(statusFichaLabel)
+                                .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(idFichaLabel)
+                                .addComponent(jButton2)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jcCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -688,17 +696,51 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         });
         masterScrollPane.setViewportView(tbFicha);
 
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pesquisa...", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
+
+        txtPesq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesqKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txtPesq);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Codigo.", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
+
+        txtPesq_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesq_idKeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtPesq_id);
+
+        btnAtualiza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/reload.png"))); // NOI18N
+        btnAtualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(masterScrollPane))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -706,15 +748,19 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 .addContainerGap()
                 .addComponent(jpDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtualiza, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(13, 13, 13)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         bindingGroup.bind();
 
-        setSize(new java.awt.Dimension(867, 422));
+        setSize(new java.awt.Dimension(867, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -728,7 +774,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             em.remove(t);
         }
         listFicha.removeAll(toRemove);
-         //Depois de deletar Salva
+        //Depois de deletar Salva
         btnSalvar.doClick();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
@@ -764,7 +810,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         User();//Pega Usuario
         btnSalvarLog.doClick();//Salva na tabela de log
         btnCancelaLog.doClick();//Atualiza tabela de Log
-        
+
         try {
             em.getTransaction().commit();
             em.getTransaction().begin();
@@ -821,7 +867,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnNovoLogActionPerformed
 
     private void tbFichaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbFichaMouseClicked
-      acao = ("Alterar");         // TODO add your handling code here:
+        acao = ("Alterar");         // TODO add your handling code here:
     }//GEN-LAST:event_tbFichaMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -834,10 +880,10 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        frmConsCliLojasTb020 frm = new frmConsCliLojasTb020(new JFrame(), true);
+        frmConsClienteLojasTb020 frm = new frmConsClienteLojasTb020(new JFrame(), true);
         frm.setVisible(true);// TODO add your handling code here:
         if (frm.isConfirmado()) {
-            Tb020cliLojas l = frm.getCli_Loja();
+            Tb020clienteLojas l = frm.getCli();
             jcCliente.getModel().setSelectedItem(l);
         }               // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
@@ -850,6 +896,36 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             jcProduto.getModel().setSelectedItem(l);
         }   // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtPesqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesqKeyReleased
+        uteis.maiscula(evt);
+        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idLojaFk.descLoja like :nome OR t.idClienteFk.nomeCli like :nome");
+        queryFicha.setParameter("nome", "%" + txtPesq.getText() + "%");
+        listFicha.clear();
+        listFicha.addAll(queryFicha.getResultList());  // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesqKeyReleased
+
+    private void txtPesq_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesq_idKeyReleased
+        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idFicha = :cod");
+        queryFicha.setParameter("cod", Integer.parseInt(txtPesq_id.getText()));
+        listFicha.clear();
+        listFicha.addAll(queryFicha.getResultList()); // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesq_idKeyReleased
+
+    private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizaActionPerformed
+        txtPesq.setText("");
+        txtPesq_id.setText("");
+        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t");
+        listFicha.clear();
+        listFicha.addAll(queryFicha.getResultList());        // TODO add your handling code here:
+    }//GEN-LAST:event_btnAtualizaActionPerformed
+
+    private void txtPrecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecoFocusLost
+        String real = txtPreco.getText();
+        String valor = real.replace(",", ".");
+        txtPreco.setText(valor);
+           // TODO add your handling code here:
+    }//GEN-LAST:event_txtPrecoFocusLost
 
     /**
      * @param args the command line arguments
@@ -895,6 +971,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ITEM;
+    private javax.swing.JButton btnAtualiza;
     public javax.swing.JButton btnCancela;
     private javax.swing.JButton btnCancelaLog;
     public javax.swing.JButton btnExcluir;
@@ -929,6 +1006,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JComboBox<String> jcCliente;
     private javax.swing.JComboBox<String> jcLoja;
     private javax.swing.JComboBox<String> jcProduto;
@@ -937,7 +1016,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JPanel jpBotoes;
     private javax.swing.JPanel jpDados;
     private javax.swing.JPanel jpLog;
-    private java.util.List<com.guina.model.Tb020cliLojas> listCliLoja;
     private java.util.List<com.guina.model.Tb019fichas> listFicha;
     private java.util.List<com.guina.model.Tb010logsistema> listLog;
     private java.util.List<com.guina.model.Tb011lojas> listLoja;
@@ -946,7 +1024,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JScrollPane masterScrollPane;
     private javax.swing.JScrollPane masterScrollPane1;
     private javax.swing.JLabel precoFichaLabel;
-    private javax.persistence.Query queryCliLoja;
     private javax.persistence.Query queryFicha;
     private javax.persistence.Query queryLog;
     private javax.persistence.Query queryLoja;
@@ -954,6 +1031,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.persistence.Query queryUser;
     private javax.swing.JLabel statusFichaLabel;
     private javax.swing.JLabel statusFichaSituacaoLabel;
+    private java.util.List<com.guina.model.Tb020clienteLojas> tb020clienteLojasList;
+    private javax.persistence.Query tb020clienteLojasQuery;
     public javax.swing.JTable tbFicha;
     public javax.swing.JTable tbLog;
     private javax.swing.JTextField txtAcao;
@@ -964,6 +1043,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIdItem;
     private javax.swing.JTextField txtItem;
+    public javax.swing.JTextField txtPesq;
+    public javax.swing.JTextField txtPesq_id;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtTabela;
     public javax.swing.JTextField txtUser;
@@ -983,15 +1064,16 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             args[0] = ficha.get(0).getIdFicha().toString();
             n = (Integer.parseInt(args[0]));
             txtId.setText(Integer.toString(n));//Recupera o ultimo codigo
-            novo = (Integer.parseInt(txtId.getText())+ 1);
+            novo = (Integer.parseInt(txtId.getText()) + 1);
         }
     }
+
     //funçaõ pega o ultimo id
     public void validaId() {
         int id = (Integer.parseInt(txtId.getText()));
         queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idFicha = id ");
-        List<Tb012vendas> venda = queryFicha.getResultList();
-        if (venda.size() > 1) {
+        List<Tb019fichas> ficha = queryFicha.getResultList();
+        if (ficha.size() > 1) {
             JOptionPane.showMessageDialog(null, "Id ja existente");
             btnCancela.doClick();
         }
@@ -1015,6 +1097,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         //Pega nome item
         txtItem.setText(jcLoja.getSelectedItem().toString());
     }
+
     public void User() {
         int user = (Integer.parseInt(txtUsuario.getText()));
         queryUser = em.createQuery("SELECT t FROM Tb001user t WHERE t.iduser = :id ");
