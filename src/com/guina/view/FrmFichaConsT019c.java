@@ -30,8 +30,7 @@ import javax.swing.table.TableRowSorter;
  *
  * @author Agnaldo
  */
-public class FrmFichaConsT019 extends javax.swing.JDialog {
-
+public class FrmFichaConsT019c extends javax.swing.JDialog {
     //////nome da tabela////////
     String tb = "tb019fichas";
     String acao, aux;// aux variavel da funcao Id
@@ -40,7 +39,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     /**
      * Creates new form FrmFichaConsT019
      */
-    public FrmFichaConsT019(java.awt.Frame parent, boolean modal) {
+    public FrmFichaConsT019c(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         if (!Beans.isDesignTime()) {
@@ -127,9 +126,9 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         dtRetornoFabrica = new com.toedter.calendar.JDateChooser();
         codProdFichaLabel = new javax.swing.JLabel();
         txtCodProduto = new javax.swing.JTextField();
-        btnPesqLoja = new javax.swing.JButton();
-        btnPesqProduto = new javax.swing.JButton();
-        btnPesqCliente = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jpBotoes = new javax.swing.JPanel();
         btnIncluir = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
@@ -142,10 +141,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         jPanel5 = new javax.swing.JPanel();
         txtPesq_id = new javax.swing.JTextField();
         btnAtualiza = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         jpLog.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Log"));
 
@@ -349,7 +344,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro Conserto");
-        setResizable(false);
 
         jpDados.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -373,12 +367,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcLoja, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        datarecebidolojaFichaLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        datarecebidolojaFichaLabel.setForeground(new java.awt.Color(255, 0, 0));
         datarecebidolojaFichaLabel.setText("Data Rec Fabrica:");
 
-        statusFichaSituacaoLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        statusFichaSituacaoLabel.setForeground(new java.awt.Color(255, 0, 0));
         statusFichaSituacaoLabel.setText("Status F Sit:");
 
         dataretiradaclienteFichaLabel.setText("Data Rec Loja:");
@@ -411,25 +401,10 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcProduto, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        jcProduto.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jcProdutoFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jcProdutoFocusLost(evt);
-            }
-        });
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.defeitoFicha}"), txtDefeitoFicha, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), txtDefeitoFicha, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
-
-        txtDefeitoFicha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtDefeitoFichaKeyReleased(evt);
-            }
-        });
 
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tb020clienteLojasList, jcCliente);
         bindingGroup.addBinding(jComboBoxBinding);
@@ -438,14 +413,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcCliente, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        jcCliente.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jcClienteFocusGained(evt);
-            }
-        });
-
         txtId.setEditable(false);
-        txtId.setBackground(new java.awt.Color(153, 204, 255));
+        txtId.setBackground(new java.awt.Color(153, 153, 255));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.idFicha}"), txtId, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -461,10 +430,11 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
 
         defeitoFichaLabel.setText("Defeito Ficha:");
 
-        jcStatus.setEditable(true);
         jcStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ISENTO", "CUSTO" }));
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.statusFicha}"), jcStatus, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcStatus, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
         precoFichaLabel.setText("Custo:         R$");
@@ -480,8 +450,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             }
         });
 
-        dataretornofabricaFichaLabel.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        dataretornofabricaFichaLabel.setForeground(new java.awt.Color(255, 0, 0));
         dataretornofabricaFichaLabel.setText("Data Env Loja:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.dataretornofabricaFicha}"), dtRetornoFabrica, org.jdesktop.beansbinding.BeanProperty.create("date"));
@@ -491,32 +459,29 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
 
         codProdFichaLabel.setText("Cod Prod Ficha:");
 
-        txtCodProduto.setEditable(false);
-        txtCodProduto.setBackground(new java.awt.Color(153, 204, 255));
-
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.codProdFicha}"), txtCodProduto, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), txtCodProduto, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        btnPesqLoja.setText("...");
-        btnPesqLoja.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("...");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesqLojaActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btnPesqProduto.setText("...");
-        btnPesqProduto.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setText("...");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesqProdutoActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
-        btnPesqCliente.setText("...");
-        btnPesqCliente.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.setText("...");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPesqClienteActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
 
@@ -540,53 +505,54 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtId)
-                            .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                             .addComponent(dtRetornoFabrica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtRecebidoLoja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtEnvioFab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jpDadosLayout.createSequentialGroup()
-                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(precoFichaLabel)
-                                    .addComponent(statusFichaSituacaoLabel))
+                                .addComponent(idProdutoFkLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPreco)
-                                    .addComponent(jcStatusFicha, 0, 91, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(statusFichaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(codProdFichaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpDadosLayout.createSequentialGroup()
                                 .addComponent(defeitoFichaLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDefeitoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtDefeitoFicha))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosLayout.createSequentialGroup()
+                                .addComponent(statusFichaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(precoFichaLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(statusFichaSituacaoLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jcStatusFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jpDadosLayout.createSequentialGroup()
-                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(jpDadosLayout.createSequentialGroup()
+                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpDadosLayout.createSequentialGroup()
                                         .addComponent(idLojaFkLabel)
                                         .addGap(23, 23, 23)
                                         .addComponent(jcLoja, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jpDadosLayout.createSequentialGroup()
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpDadosLayout.createSequentialGroup()
                                         .addComponent(idClienteFkLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jcCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosLayout.createSequentialGroup()
-                                        .addComponent(codProdFichaLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(idProdutoFkLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(jcCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btnPesqProduto)
-                                    .addComponent(btnPesqLoja)
-                                    .addComponent(btnPesqCliente))))
-                        .addGap(18, 18, 18))))
+                                    .addComponent(jButton1)
+                                    .addComponent(jButton3))))
+                        .addGap(48, 48, 48))))
         );
         jpDadosLayout.setVerticalGroup(
             jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -595,21 +561,20 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpDadosLayout.createSequentialGroup()
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(codProdFichaLabel))
+                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(idProdutoFkLabel)
                                 .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(idFichaLabel)
-                                .addComponent(btnPesqProduto)
+                                .addComponent(jButton2)
+                                .addComponent(codProdFichaLabel)
                                 .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jcCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(idClienteFkLabel)
                             .addComponent(datacadastroFichaLabel)
-                            .addComponent(btnPesqCliente)))
+                            .addComponent(jButton3)))
                     .addComponent(dtCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -618,31 +583,29 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                     .addComponent(dtEnvioFab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jcLoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPesqLoja)))
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dtRecebidoLoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(datarecebidolojaFichaLabel)
                     .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(statusFichaLabel)
+                        .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(precoFichaLabel)
                         .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(statusFichaLabel)
-                        .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jcStatusFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(statusFichaSituacaoLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dataretornofabricaFichaLabel)
                     .addComponent(dtRetornoFabrica, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jcStatusFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(statusFichaSituacaoLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(defeitoFichaLabel)
-                        .addComponent(txtDefeitoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(dataretiradaclienteFichaLabel)
-                        .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtDefeitoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dataretiradaclienteFichaLabel)
+                    .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -757,25 +720,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new java.awt.GridLayout());
-
-        jLabel7.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel7.setText("Preenchido Fabrica");
-        jPanel1.add(jLabel7);
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(153, 204, 255));
-        jLabel8.setText("Preenchido Automatico");
-        jPanel1.add(jLabel8);
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/baixo.jpeg"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -785,15 +729,11 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(masterScrollPane))
@@ -806,17 +746,12 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 .addComponent(jpDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAtualiza)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAtualiza, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -867,7 +802,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(verificarCampos()){      
         btnNovoLog.doClick();
         Dados();//Preenche dados
         User();//Pega Usuario
@@ -887,7 +821,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             listFicha.clear();
             listFicha.addAll(merged);
         }
-     }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
@@ -934,43 +867,46 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         acao = ("Alterar");         // TODO add your handling code here:
     }//GEN-LAST:event_tbFichaMouseClicked
 
-    private void btnPesqLojaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqLojaActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         frmConsLojaTb011 frm = new frmConsLojaTb011(new JFrame(), true);
         frm.setVisible(true);// TODO add your handling code here:
         if (frm.isConfirmado()) {
             Tb011lojas l = frm.getLoja();
             jcLoja.getModel().setSelectedItem(l);
         }          // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesqLojaActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnPesqClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqClienteActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         frmConsClienteLojasTb020 frm = new frmConsClienteLojasTb020(new JFrame(), true);
         frm.setVisible(true);// TODO add your handling code here:
         if (frm.isConfirmado()) {
             Tb020clienteLojas l = frm.getCli();
             jcCliente.getModel().setSelectedItem(l);
         }               // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesqClienteActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void btnPesqProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesqProdutoActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         frmConsProd021 frm = new frmConsProd021(new JFrame(), true);
         frm.setVisible(true);// TODO add your handling code here:
         if (frm.isConfirmado()) {
             Tb021prodLojas l = frm.getProd_Loja();
             jcProduto.getModel().setSelectedItem(l);
         }   // TODO add your handling code here:
-    }//GEN-LAST:event_btnPesqProdutoActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void txtPesqKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesqKeyReleased
         uteis.maiscula(evt);
-        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idLojaFk.descLoja like :nome OR t.idClienteFk.nomeCli like :nome");
+        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idLojaFk.descLoja like :nome OR t.idClienteFk.nomeCli like :nomegui");
         queryFicha.setParameter("nome", "%" + txtPesq.getText() + "%");
         listFicha.clear();
         listFicha.addAll(queryFicha.getResultList());  // TODO add your handling code here:
     }//GEN-LAST:event_txtPesqKeyReleased
 
     private void txtPesq_idKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesq_idKeyReleased
-        // TODO add your handling code here:
+        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idFicha = :cod");
+        queryFicha.setParameter("cod", Integer.parseInt(txtPesq_id.getText()));
+        listFicha.clear();
+        listFicha.addAll(queryFicha.getResultList()); // TODO add your handling code here:
     }//GEN-LAST:event_txtPesq_idKeyReleased
 
     private void btnAtualizaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizaActionPerformed
@@ -985,45 +921,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         String real = txtPreco.getText();
         String valor = real.replace(",", ".");
         txtPreco.setText(valor);
-        
-         if (Integer.parseInt(txtPreco.getText()) <= 0) {
-            jcStatus.setSelectedItem("ISENTO");
-        } else {
-            jcStatus.setSelectedItem("CUSTO");
-        }  // TODO add your handling code here:
-        // TODO add your handling code here:
+           // TODO add your handling code here:
     }//GEN-LAST:event_txtPrecoFocusLost
-
-    private void jcProdutoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcProdutoFocusLost
-        String cod = (jcProduto.getSelectedItem().toString()).trim();
-        int tam = cod.length();
-        String cod1 = cod.substring(tam - 13);
-        txtCodProduto.setText(cod1);
-    }//GEN-LAST:event_jcProdutoFocusLost
-
-    private void jcProdutoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcProdutoFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jcProdutoFocusGained
-
-    private void jcClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcClienteFocusGained
-       ///Garante Salvar o Codigo
-        String cod = (jcProduto.getSelectedItem().toString()).trim();
-        int tam = cod.length();
-        String cod1 = cod.substring(tam - 13);
-        txtCodProduto.setText(cod1);
-       ///////////////////////////////////////////////////////////////////////////////        // TODO add your handling code here:
-    }//GEN-LAST:event_jcClienteFocusGained
-
-    private void txtDefeitoFichaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDefeitoFichaKeyReleased
-      uteis.maiscula(evt);        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDefeitoFichaKeyReleased
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idProdutoFk.codsamProd = :cod");
-        queryFicha.setParameter("cod",txtPesq_id.getText());
-        listFicha.clear();
-        listFicha.addAll(queryFicha.getResultList());        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1042,20 +941,21 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmFichaConsT019.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFichaConsT019c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmFichaConsT019.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFichaConsT019c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmFichaConsT019.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFichaConsT019c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmFichaConsT019.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmFichaConsT019c.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FrmFichaConsT019 dialog = new FrmFichaConsT019(new javax.swing.JFrame(), true);
+                FrmFichaConsT019c dialog = new FrmFichaConsT019c(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1075,9 +975,6 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     public javax.swing.JButton btnExcluir;
     public javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnNovoLog;
-    private javax.swing.JButton btnPesqCliente;
-    private javax.swing.JButton btnPesqLoja;
-    private javax.swing.JButton btnPesqProduto;
     public javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarLog;
     private javax.swing.JLabel codProdFichaLabel;
@@ -1098,15 +995,14 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JLabel idLojaFkLabel;
     private javax.swing.JLabel idProdutoFkLabel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -1210,35 +1106,5 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             args[0] = data.get(0).getNomeuser();
             txtUser.setText(args[0]);
         }
-    }
-    
-    public boolean verificarCampos() {
-        if (dtCadastro.getDate() == null) {
-            JOptionPane.showMessageDialog(null, "Campo Data Cadastro Obrigatorio.", "Erro", JOptionPane.ERROR_MESSAGE);
-            txtData.requestFocus();
-            return false;
-        }
-        if (jcProduto.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Campo Produto Obrigatorio.", "Erro", JOptionPane.ERROR_MESSAGE);
-            jcProduto.requestFocus();
-            return false;
-        }
-        if (jcCliente.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Campo Cliente Obrigatorio.", "Erro", JOptionPane.ERROR_MESSAGE);
-            jcCliente.requestFocus();
-            return false;
-        }
-        if (jcLoja.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Campo Loja Obrigatorio.", "Erro", JOptionPane.ERROR_MESSAGE);
-            jcLoja.requestFocus();
-            return false;
-        }
-        if (txtPreco.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Campo Preço Obrigatorio.", "Erro", JOptionPane.ERROR_MESSAGE);
-            txtPreco.requestFocus();
-            return false;
-        }
-        return true;
-
     }
 }

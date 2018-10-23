@@ -65,9 +65,13 @@ public class frmConsProd021 extends javax.swing.JDialog {
         btnConfirma = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txtPesquisa = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        txtPesquisa1 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Consulta Cliente Loja");
+        setTitle("Consulta Produto");
 
         tbProdLoja.setFont(new java.awt.Font("Times New Roman", 0, 10)); // NOI18N
         tbProdLoja.setForeground(new java.awt.Color(0, 51, 153));
@@ -88,8 +92,8 @@ public class frmConsProd021 extends javax.swing.JDialog {
         if (tbProdLoja.getColumnModel().getColumnCount() > 0) {
             tbProdLoja.getColumnModel().getColumn(0).setMinWidth(100);
             tbProdLoja.getColumnModel().getColumn(0).setMaxWidth(100);
-            tbProdLoja.getColumnModel().getColumn(1).setMinWidth(150);
-            tbProdLoja.getColumnModel().getColumn(1).setMaxWidth(200);
+            tbProdLoja.getColumnModel().getColumn(1).setMinWidth(300);
+            tbProdLoja.getColumnModel().getColumn(1).setMaxWidth(320);
         }
 
         jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder(javax.swing.border.EtchedBorder.RAISED));
@@ -115,7 +119,7 @@ public class frmConsProd021 extends javax.swing.JDialog {
         });
         jPanel2.add(btnConfirma);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pesquisa...", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Cor", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         txtPesquisa.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -125,6 +129,30 @@ public class frmConsProd021 extends javax.swing.JDialog {
         });
         jPanel1.add(txtPesquisa);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Codigo", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel3.setLayout(new java.awt.GridLayout());
+
+        txtPesquisa1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesquisa1KeyReleased(evt);
+            }
+        });
+        jPanel3.add(txtPesquisa1);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/pesq.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Limpar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -132,28 +160,44 @@ public class frmConsProd021 extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 176, Short.MAX_VALUE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         bindingGroup.bind();
 
-        setSize(new java.awt.Dimension(398, 237));
+        setSize(new java.awt.Dimension(488, 237));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -180,6 +224,25 @@ public class frmConsProd021 extends javax.swing.JDialog {
         list.clear();
         list.addAll(query.getResultList());        // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisaKeyReleased
+
+    private void txtPesquisa1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisa1KeyReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPesquisa1KeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        query = em.createQuery("SELECT t FROM Tb021prodLojas t WHERE t.codsamProd = :cod");
+        query.setParameter("cod",txtPesquisa1.getText());
+        list.clear();
+        list.addAll(query.getResultList());  // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        txtPesquisa.setText("");
+        txtPesquisa1.setText("");
+        query = em.createQuery("SELECT t FROM Tb021prodLojas t");
+        list.clear();
+        list.addAll(query.getResultList());  // TODO add your handling code here:        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -354,13 +417,17 @@ public class frmConsProd021 extends javax.swing.JDialog {
     private javax.swing.JButton btnConfirma;
     private javax.swing.JButton btnVoltar;
     private javax.persistence.EntityManager em;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private java.util.List<com.guina.model.Tb021prodLojas> list;
     private javax.persistence.Query query;
     private javax.swing.JTable tbProdLoja;
     private javax.swing.JTextField txtPesquisa;
+    private javax.swing.JTextField txtPesquisa1;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 }

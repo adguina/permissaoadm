@@ -142,7 +142,7 @@ public class Tb021prodLojas implements Serializable {
 
     @Override
     public String toString() {
-        return this.corProd;
+        return this.corProd +"--"+ this.codsamProd;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

@@ -56,7 +56,7 @@ public class frmConsClienteLojasTb020 extends javax.swing.JDialog {
 
         em = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("permissaoPU").createEntityManager();
         query = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020clienteLojas t");
-        list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : query.getResultList();
+        list = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(query.getResultList());
         jScrollPane1 = new javax.swing.JScrollPane();
         tbCli = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
@@ -173,12 +173,11 @@ public class frmConsClienteLojasTb020 extends javax.swing.JDialog {
 
     private void txtPesquisaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesquisaKeyReleased
         uteis.maiscula(evt);
-        query = em.createQuery("SELECT t FROM Tb004categorias t WHERE t.nomecategoria like :nome");
+        query = em.createQuery("SELECT t FROM Tb020clienteLojas t WHERE t.nomeCli like :nome");
         query.setParameter("nome", "%" + txtPesquisa.getText() + "%");
         list.clear();
         list.addAll(query.getResultList());        // TODO add your handling code here:
     }//GEN-LAST:event_txtPesquisaKeyReleased
-
     /**
      * @param args the command line arguments
      */
