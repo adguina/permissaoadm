@@ -14,6 +14,10 @@
           <ComponentRef name="em"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
+      </AuxValues>
     </Component>
     <Component class="java.util.List" name="listFicha">
       <Properties>
@@ -24,6 +28,8 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb019fichas&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="2"/>
       </AuxValues>
     </Component>
     <Component class="javax.persistence.Query" name="queryLoja">
@@ -108,7 +114,7 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;com.guina.model.Tb010logsistema&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.persistence.Query" name="tb020clienteLojasQuery">
+    <Component class="javax.persistence.Query" name="queryCliente">
       <Properties>
         <Property name="query" type="java.lang.String" value="SELECT t FROM Tb020clienteLojas t"/>
         <Property name="entityManager" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$EMProperty$EntityManagerEditor">
@@ -116,10 +122,10 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="java.util.List" name="tb020clienteLojasList">
+    <Component class="java.util.List" name="listCliente">
       <Properties>
         <Property name="query" type="java.lang.Object" editor="org.netbeans.modules.form.j2ee.J2EEPropertyModifier$QueryBeanProperty$QueryEditor">
-          <ComponentRef name="tb020clienteLojasQuery"/>
+          <ComponentRef name="queryCliente"/>
         </Property>
       </Properties>
       <AuxValues>
@@ -477,7 +483,7 @@
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
-    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,24,0,0,3,99"/>
+    <SyntheticProperty name="formSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,1,-109,0,0,3,99"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="0"/>
     <SyntheticProperty name="generateSize" type="boolean" value="true"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
@@ -497,27 +503,18 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jpDados" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jpBotoes" min="-2" max="-2" attributes="0"/>
-                          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel4" min="-2" pref="315" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPanel5" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="28" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnAtualiza" min="-2" pref="31" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="masterScrollPane" alignment="0" max="32767" attributes="0"/>
-              </Group>
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jpBotoes" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Component id="jTabbedPane1" alignment="1" max="32767" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -525,454 +522,1179 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jpDados" min="-2" max="-2" attributes="0"/>
+              <Component id="jTabbedPane1" min="-2" pref="295" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="jpBotoes" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="btnAtualiza" min="-2" max="-2" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="8" max="32767" attributes="0"/>
-              <Component id="masterScrollPane" pref="225" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jpBotoes" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jpDados">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
-          </Border>
-        </Property>
-      </Properties>
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="datacadastroFichaLabel" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="dataretiradaclienteFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dataenviofabricaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="dataretornofabricaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="datarecebidolojaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="idFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="txtId" max="32767" attributes="0"/>
-                              <Component id="dtRetiradaCliente" alignment="0" pref="122" max="32767" attributes="0"/>
-                              <Component id="dtRetornoFabrica" alignment="0" max="32767" attributes="0"/>
-                              <Component id="dtRecebidoLoja" alignment="0" max="32767" attributes="0"/>
-                              <Component id="dtEnvioFab" alignment="0" max="32767" attributes="0"/>
-                              <Component id="dtCadastro" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="precoFichaLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="statusFichaSituacaoLabel" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtPreco" max="32767" attributes="0"/>
-                                      <Component id="jcStatusFicha" pref="91" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="statusFichaLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="jcStatus" min="-2" pref="136" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="defeitoFichaLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="txtDefeitoFicha" min="-2" pref="466" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="idLojaFkLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                                          <Component id="jcLoja" min="-2" pref="415" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="idClienteFkLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jcCliente" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="codProdFichaLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="txtCodProduto" min="-2" pref="112" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="idProdutoFkLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jcProduto" min="-2" pref="209" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="btnPesqProduto" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnPesqLoja" min="-2" max="-2" attributes="0"/>
-                                      <Component id="btnPesqCliente" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                  <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="codProdFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="idProdutoFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jcProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="idFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnPesqProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jcCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="idClienteFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="datacadastroFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnPesqCliente" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="dtCadastro" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="idLojaFkLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="dataenviofabricaFichaLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="dtEnvioFab" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcLoja" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnPesqLoja" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="dtRecebidoLoja" min="-2" max="-2" attributes="0"/>
-                      <Component id="datarecebidolojaFichaLabel" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="precoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="statusFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jcStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="dataretornofabricaFichaLabel" min="-2" max="-2" attributes="0"/>
-                      <Component id="dtRetornoFabrica" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jcStatusFicha" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="statusFichaSituacaoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="defeitoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDefeitoFicha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dataretiradaclienteFichaLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="dtRetiradaCliente" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace min="59" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="idFichaLabel">
+        <Container class="javax.swing.JPanel" name="jpDados">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Codigo:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dataenviofabricaFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Envio Fabrica:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="idProdutoFkLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Produto:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="datacadastroFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Cadastro:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtRecebidoLoja">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.datarecebidolojaFicha}" target="dtRecebidoLoja" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRecebidoLoja" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcLoja">
-          <BindingProperties>
-            <BindingProperty name="elements" source="listLoja" target="jcLoja" targetPath="elements" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idLojaFk}" target="jcLoja" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcLoja" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="datarecebidolojaFichaLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Data Rec Fabrica:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusFichaSituacaoLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Status F Sit:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dataretiradaclienteFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Data Rec Loja:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtCadastro">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.datacadastroFicha}" target="dtCadastro" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtCadastro" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcStatusFicha">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="ABERTO"/>
-                <StringItem index="1" value="FECHADO"/>
-              </StringArray>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
             </Property>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.statusFichaSituacao}" target="jcStatusFicha" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcStatusFicha" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="statusFichaLabel">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Cadastro">
+                <Property name="tabTitle" type="java.lang.String" value="Cadastro"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="datacadastroFichaLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dataretiradaclienteFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dataenviofabricaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dataretornofabricaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="datarecebidolojaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="idFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtId" max="32767" attributes="0"/>
+                                  <Component id="dtRetiradaCliente" alignment="0" pref="125" max="32767" attributes="0"/>
+                                  <Component id="dtRetornoFabrica" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dtRecebidoLoja" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dtEnvioFab" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="dtCadastro" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <Component id="idLojaFkLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+                                              <Component id="jcLoja" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="codProdFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="idClienteFkLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="txtCodProduto" max="32767" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="idProdutoFkLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="jcProduto" min="-2" pref="209" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="jcCliente" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnPesqProduto" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnPesqLoja" min="-2" max="-2" attributes="0"/>
+                                          <Component id="btnPesqCliente" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="statusFichaSituacaoLabel" min="-2" max="-2" attributes="0"/>
+                                          <Component id="precoFichaLabel" min="-2" pref="81" max="-2" attributes="0"/>
+                                          <Component id="defeitoFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="txtDefeitoFicha" alignment="0" min="-2" pref="452" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="txtPreco" max="32767" attributes="0"/>
+                                                  <Component id="jcStatusFicha" pref="91" max="32767" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="statusFichaLabel" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="jcStatus" min="-2" pref="136" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="0" pref="2" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                      <Component id="txtId" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="codProdFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="idFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="idProdutoFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jcProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="btnPesqProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtCodProduto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="jcCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="idClienteFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="datacadastroFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnPesqCliente" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="dtCadastro" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dataenviofabricaFichaLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="dtEnvioFab" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jcLoja" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnPesqLoja" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="idLojaFkLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dtRecebidoLoja" min="-2" max="-2" attributes="0"/>
+                          <Component id="datarecebidolojaFichaLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="precoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPreco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="statusFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jcStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dataretornofabricaFichaLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="dtRetornoFabrica" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jcStatusFicha" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="statusFichaSituacaoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="defeitoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDefeitoFicha" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="dataretiradaclienteFichaLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="dtRetiradaCliente" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="idFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Codigo:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="dataenviofabricaFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Data Envio Fabrica:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="idProdutoFkLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="* Produto:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="datacadastroFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="* Data Cadastro:"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dtRecebidoLoja">
+              <BindingProperties>
+                <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.datarecebidolojaFicha}" target="dtRecebidoLoja" targetPath="date" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRecebidoLoja" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcLoja">
+              <BindingProperties>
+                <BindingProperty name="elements" source="listLoja" target="jcLoja" targetPath="elements" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idLojaFk}" target="jcLoja" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcLoja" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="datarecebidolojaFichaLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Data Rec Fabrica:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="statusFichaSituacaoLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Status F Sit:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="dataretiradaclienteFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Data Rec Loja:"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dtCadastro">
+              <BindingProperties>
+                <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.datacadastroFicha}" target="dtCadastro" targetPath="date" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtCadastro" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcStatusFicha">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="ABERTO"/>
+                    <StringItem index="1" value="FECHADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.statusFichaSituacao}" target="jcStatusFicha" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcStatusFicha" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="statusFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Status Ficha:"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dtEnvioFab">
+              <BindingProperties>
+                <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataenviofabricaFicha}" target="dtEnvioFab" targetPath="date" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtEnvioFab" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="idClienteFkLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="* Cliente:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcProduto">
+              <BindingProperties>
+                <BindingProperty name="elements" source="listProd" target="jcProduto" targetPath="elements" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idProdutoFk}" target="jcProduto" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcProduto" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jcProdutoFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jcProdutoFocusLost"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDefeitoFicha">
+              <BindingProperties>
+                <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.defeitoFicha}" target="txtDefeitoFicha" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtDefeitoFicha" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <Events>
+                <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDefeitoFichaKeyReleased"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcCliente">
+              <BindingProperties>
+                <BindingProperty name="elements" source="listCliente" target="jcCliente" targetPath="elements" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idClienteFk}" target="jcCliente" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcCliente" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jcClienteFocusGained"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtId">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.idFicha}" target="txtId" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtId" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dtRetiradaCliente">
+              <BindingProperties>
+                <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataretiradaclienteFicha}" target="dtRetiradaCliente" targetPath="date" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRetiradaCliente" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="idLojaFkLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="* Loja:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="defeitoFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Defeito Ficha:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcStatus">
+              <Properties>
+                <Property name="editable" type="boolean" value="true"/>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="ISENTO"/>
+                    <StringItem index="1" value="CUSTO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.statusFicha}" target="jcStatus" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="precoFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="* Custo:  R$"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtPreco">
+              <BindingProperties>
+                <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.precoFicha}" target="txtPreco" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtPreco" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPrecoFocusLost"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="dataretornofabricaFichaLabel">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="11" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Data Env Loja:"/>
+              </Properties>
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="dtRetornoFabrica">
+              <BindingProperties>
+                <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataretornofabricaFicha}" target="dtRetornoFabrica" targetPath="date" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRetornoFabrica" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="codProdFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Cod Prod Ficha:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtCodProduto">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="cc" red="99" type="rgb"/>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.codProdFicha}" target="txtCodProduto" targetPath="text" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtCodProduto" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnPesqLoja">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqLojaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnPesqProduto">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqProdutoActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnPesqCliente">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="..."/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqClienteActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Status Ficha:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtEnvioFab">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataenviofabricaFicha}" target="dtEnvioFab" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtEnvioFab" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="idClienteFkLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cliente:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcProduto">
-          <BindingProperties>
-            <BindingProperty name="elements" source="listProd" target="jcProduto" targetPath="elements" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idProdutoFk}" target="jcProduto" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcProduto" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jcProdutoFocusGained"/>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jcProdutoFocusLost"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtDefeitoFicha">
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.defeitoFicha}" target="txtDefeitoFicha" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtDefeitoFicha" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDefeitoFichaKeyReleased"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcCliente">
-          <BindingProperties>
-            <BindingProperty name="elements" source="tb020clienteLojasList" target="jcCliente" targetPath="elements" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.idClienteFk}" target="jcCliente" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcCliente" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <Events>
-            <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="jcClienteFocusGained"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtId">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="99" type="rgb"/>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                <EtchetBorder/>
+              </Border>
             </Property>
           </Properties>
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.idFicha}" target="txtId" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtId" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtRetiradaCliente">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataretiradaclienteFicha}" target="dtRetiradaCliente" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRetiradaCliente" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="idLojaFkLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Loja:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="defeitoFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Defeito Ficha:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="jcStatus">
-          <Properties>
-            <Property name="editable" type="boolean" value="true"/>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="2">
-                <StringItem index="0" value="ISENTO"/>
-                <StringItem index="1" value="CUSTO"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <BindingProperties>
-            <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.statusFicha}" target="jcStatus" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="precoFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Custo:         R$"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtPreco">
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.precoFicha}" target="txtPreco" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtPreco" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-          <Events>
-            <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="txtPrecoFocusLost"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="dataretornofabricaFichaLabel">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Data Env Loja:"/>
-          </Properties>
-        </Component>
-        <Component class="com.toedter.calendar.JDateChooser" name="dtRetornoFabrica">
-          <BindingProperties>
-            <BindingProperty name="date" source="tbFicha" sourcePath="${selectedElement.dataretornofabricaFicha}" target="dtRetornoFabrica" targetPath="date" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="dtRetornoFabrica" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="codProdFichaLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cod Prod Ficha:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtCodProduto">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="cc" red="99" type="rgb"/>
-            </Property>
-          </Properties>
-          <BindingProperties>
-            <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.codProdFicha}" target="txtCodProduto" targetPath="text" updateStrategy="0" immediately="false"/>
-            <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtCodProduto" targetPath="enabled" updateStrategy="0" immediately="false"/>
-          </BindingProperties>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPesqLoja">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqLojaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPesqProduto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqProdutoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPesqCliente">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="..."/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesqClienteActionPerformed"/>
-          </Events>
-        </Component>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Pesquisa">
+                <Property name="tabTitle" type="java.lang.String" value="Pesquisa"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jPanel4" min="-2" pref="315" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jPanel5" pref="138" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" pref="28" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnAtualiza" min="-2" pref="31" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="btnPdf" min="-2" pref="32" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="244" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="masterScrollPane" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jPanel4" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel5" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" linkSize="1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                              <Component id="btnPdf" linkSize="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnAtualiza" linkSize="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="masterScrollPane" min="-2" pref="193" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="jPanel4">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder justification="1" position="2" title="Pesquisa...">
+                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </TitledBorder>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="0"/>
+                <Property name="rows" type="int" value="1"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextField" name="txtPesq">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesqKeyReleased"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="jPanel5">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder justification="1" position="2" title="Codigo.">
+                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                    </TitledBorder>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="0"/>
+                <Property name="rows" type="int" value="1"/>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JTextField" name="txtPesq_id">
+                  <Events>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesq_idKeyReleased"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="btnAtualiza">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/guina/icone/reload.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizaActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/guina/icone/baixo.jpeg"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+              </Events>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="masterScrollPane">
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tbFicha">
+                  <Properties>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="50" minWidth="50" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="250" minWidth="200" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="200" minWidth="180" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="110" minWidth="100" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="280" minWidth="220" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="100" minWidth="100" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="170" minWidth="150" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="80" minWidth="80" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="90" minWidth="80" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="90" minWidth="70" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="90" minWidth="70" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                  <BindingProperties>
+                    <BindingProperty name="elements" source="listFicha" target="tbFicha" targetPath="elements" updateStrategy="0" immediately="true">
+                      <Subbinding sourcePath="${idFicha}">
+                        <BindingParameter name="NAME" value="ID"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Long.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${datacadastroFicha}">
+                        <BindingParameter name="NAME" value="Data Cadastro"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${idClienteFk}">
+                        <BindingParameter name="NAME" value="Cliente"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${idLojaFk}">
+                        <BindingParameter name="NAME" value="Loja"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${codProdFicha}">
+                        <BindingParameter name="NAME" value="Codigo Produto"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${idProdutoFk}">
+                        <BindingParameter name="NAME" value="Produto"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${dataenviofabricaFicha}">
+                        <BindingParameter name="NAME" value="Data Envio F"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${datarecebidolojaFicha}">
+                        <BindingParameter name="NAME" value="Data Receb Loja"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${dataretornofabricaFicha}">
+                        <BindingParameter name="NAME" value="Data Enviado Loja"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${dataretiradaclienteFicha}">
+                        <BindingParameter name="NAME" value="Data Recebido Loja"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${defeitoFicha}">
+                        <BindingParameter name="NAME" value="Defeito"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${nfFicha}">
+                        <BindingParameter name="NAME" value="NF"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${precoFicha}">
+                        <BindingParameter name="NAME" value="Custo"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${statusFicha}">
+                        <BindingParameter name="NAME" value="Status Custo"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                      <Subbinding sourcePath="${statusFichaSituacao}">
+                        <BindingParameter name="NAME" value="Status Conserto"/>
+                        <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
+                      </Subbinding>
+                    </BindingProperty>
+                  </BindingProperties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbFichaMouseClicked"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="btnPdf">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/com/guina/icone/pdf.png"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPdfActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="jPanel6">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Chek List">
+                <Property name="tabTitle" type="java.lang.String" value="Chek List"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="corpofrenteFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="corpocostaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="acabamentoFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="alcaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vivoFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="zipperFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jcZipper" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jcVivo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcAlca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcAcab" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcCorpoFrente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcCorpoCosta" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="placaFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="correnteFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="termzipperFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="ferragemFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="basefundoFichaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jcBaseFundo" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcPlaca" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcCorrente" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcFerragem" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcTermZipper" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                      <Component id="jPanel7" pref="366" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="corpofrenteFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcCorpoFrente" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="corpocostaFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcCorpoCosta" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="acabamentoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcAcab" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="alcaFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcAlca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="vivoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcVivo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="basefundoFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcBaseFundo" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="placaFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcPlaca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="correnteFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcCorrente" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="termzipperFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcTermZipper" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="ferragemFichaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jcFerragem" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="zipperFichaLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jcZipper" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jPanel7" alignment="0" min="-2" pref="184" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="72" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JComboBox" name="jcZipper">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.zipperFicha}" target="jcZipper" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcZipper" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="corpofrenteFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CORPO FRENTE:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="corpocostaFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CORPO COSTA:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="acabamentoFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ACABAMENTO:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="alcaFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="AL&#xc7;A:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="vivoFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="VIVO:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="zipperFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="ZIPPER:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcCorpoFrente">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.corpofrenteFicha}" target="jcCorpoFrente" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcCorpoFrente" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcCorpoCosta">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.corpocostaFicha}" target="jcCorpoCosta" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcCorpoCosta" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcVivo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.vivoFicha}" target="jcVivo" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcVivo" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcAlca">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.alcaFicha}" target="jcAlca" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcAlca" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcAcab">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.acabamentoFicha}" target="jcAcab" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcAcab" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcPlaca">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.placaFicha}" target="jcPlaca" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcPlaca" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcTermZipper">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.termzipperFicha}" target="jcTermZipper" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcTermZipper" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcFerragem">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.ferragemFicha}" target="jcFerragem" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcFerragem" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcCorrente">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.correnteFicha}" target="jcCorrente" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcCorrente" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="jcBaseFundo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="2">
+                    <StringItem index="0" value="BOM"/>
+                    <StringItem index="1" value="DANIFICADO"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <BindingProperties>
+                <BindingProperty name="selectedItem" source="tbFicha" sourcePath="${selectedElement.basefundoFicha}" target="jcBaseFundo" targetPath="selectedItem" updateStrategy="0" immediately="false"/>
+                <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="jcBaseFundo" targetPath="enabled" updateStrategy="0" immediately="false"/>
+              </BindingProperties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="placaFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="PLACA:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="correnteFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="FICHA:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="termzipperFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="TERMINAL ZIPPER"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="ferragemFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="FERRAGEM:"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="basefundoFichaLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="BASE FUNDO"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JPanel" name="jPanel7">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder justification="1" position="2" title="Observa&#xe7;&#xe3;o"/>
+                  </Border>
+                </Property>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
+                <Property name="columns" type="int" value="0"/>
+                <Property name="rows" type="int" value="1"/>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTextArea" name="txtObs">
+                      <Properties>
+                        <Property name="columns" type="int" value="20"/>
+                        <Property name="rows" type="int" value="5"/>
+                      </Properties>
+                      <BindingProperties>
+                        <BindingProperty name="text" source="tbFicha" sourcePath="${selectedElement.obsFicha}" target="txtObs" targetPath="text" updateStrategy="0" immediately="false"/>
+                        <BindingProperty name="enabled" source="tbFicha" sourcePath="${selectedElement != null}" target="txtObs" targetPath="enabled" updateStrategy="0" immediately="false"/>
+                      </BindingProperties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jpBotoes">
@@ -1039,226 +1761,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JScrollPane" name="masterScrollPane">
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTable" name="tbFicha">
-          <Properties>
-            <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-              <TableColumnModel selectionModel="0">
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-              </TableColumnModel>
-            </Property>
-            <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-              <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-            </Property>
-          </Properties>
-          <BindingProperties>
-            <BindingProperty name="elements" source="listFicha" target="tbFicha" targetPath="elements" updateStrategy="0" immediately="true">
-              <Subbinding sourcePath="${idFicha}">
-                <BindingParameter name="NAME" value="Registro"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Long.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${codProdFicha}">
-                <BindingParameter name="NAME" value="Cod Sistema"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${idLojaFk}">
-                <BindingParameter name="NAME" value="Loja"/>
-              </Subbinding>
-              <Subbinding sourcePath="${idProdutoFk}">
-                <BindingParameter name="NAME" value="Produto"/>
-              </Subbinding>
-              <Subbinding sourcePath="${datacadastroFicha}">
-                <BindingParameter name="NAME" value="Data Cadastro"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${dataenviofabricaFicha}">
-                <BindingParameter name="NAME" value="Data Envio"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${dataretornofabricaFicha}">
-                <BindingParameter name="NAME" value="Data Retorno"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${datarecebidolojaFicha}">
-                <BindingParameter name="NAME" value="Data Rec Loja"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${dataretiradaclienteFicha}">
-                <BindingParameter name="NAME" value="Data Ret Cliente"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="java.util.Date.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${defeitoFicha}">
-                <BindingParameter name="NAME" value="Defeito Ficha"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${statusFichaSituacao}">
-                <BindingParameter name="NAME" value="Status Ficha Situacao"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${idClienteFk}">
-                <BindingParameter name="NAME" value="Cliente"/>
-              </Subbinding>
-              <Subbinding sourcePath="${precoFicha}">
-                <BindingParameter name="NAME" value="Preco Ficha"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="Float.class"/>
-              </Subbinding>
-              <Subbinding sourcePath="${statusFicha}">
-                <BindingParameter name="NAME" value="Status Ficha"/>
-                <BindingParameter name="javax.swing.binding.ParameterKeys.COLUMN_CLASS" value="String.class"/>
-              </Subbinding>
-            </BindingProperty>
-          </BindingProperties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tbFichaMouseClicked"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="false"/>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel4">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="1" position="2" title="Pesquisa...">
-              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
-              </Border>
-            </TitledBorder>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-        <Property name="columns" type="int" value="0"/>
-        <Property name="rows" type="int" value="1"/>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtPesq">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesqKeyReleased"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Container class="javax.swing.JPanel" name="jPanel5">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-            <TitledBorder justification="1" position="2" title="Codigo.">
-              <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-                <EtchetBorder/>
-              </Border>
-            </TitledBorder>
-          </Border>
-        </Property>
-      </Properties>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridLayout">
-        <Property name="columns" type="int" value="0"/>
-        <Property name="rows" type="int" value="1"/>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JTextField" name="txtPesq_id">
-          <Events>
-            <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPesq_idKeyReleased"/>
-          </Events>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JButton" name="btnAtualiza">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/guina/icone/reload.png"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAtualizaActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -1294,15 +1796,5 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton1">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/com/guina/icone/baixo.jpeg"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
-      </Events>
-    </Component>
   </SubComponents>
 </Form>

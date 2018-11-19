@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Lojas" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="5240c355-3db7-4c91-93e6-ac4651bc051c">
+	<property name="ireport.scriptlethandling" value="2"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<queryString>
+		<![CDATA[SELECT
+     *,
+     tb020cliente_lojas."nome_cli" AS tb020cliente_lojas_nome_cli,
+     tb020cliente_lojas."cel_cli" AS tb020cliente_lojas_cel_cli,
+     tb020cliente_lojas."email_cli" AS tb020cliente_lojas_email_cli
+FROM
+     "tb020cliente_lojas" tb020cliente_lojas]]>
+	</queryString>
+	<field name="id_cli_lojas" class="java.lang.Long"/>
+	<field name="nome_cli" class="java.lang.String"/>
+	<field name="cep_cli" class="java.lang.String"/>
+	<field name="rua_cli" class="java.lang.String"/>
+	<field name="bairro_cli" class="java.lang.String"/>
+	<field name="cidade_cli" class="java.lang.String"/>
+	<field name="tel_cli" class="java.lang.String"/>
+	<field name="cel_cli" class="java.lang.String"/>
+	<field name="email_cli" class="java.lang.String"/>
+	<field name="cpf_cli" class="java.lang.String"/>
+	<field name="datacad_cli" class="java.sql.Date"/>
+	<field name="id_uf" class="java.lang.String"/>
+	<field name="numero_cli" class="java.lang.String"/>
+	<field name="tb020cliente_lojas_nome_cli" class="java.lang.String"/>
+	<field name="tb020cliente_lojas_cel_cli" class="java.lang.String"/>
+	<field name="tb020cliente_lojas_email_cli" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="560cf553-a451-46e7-afae-cdf85467d356"/>
+				<text><![CDATA[nome_cli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="0" width="100" height="20" uuid="442b513d-6966-46d0-ab6e-46f265867794"/>
+				<text><![CDATA[email_cli]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="227" y="0" width="100" height="20" uuid="205c293d-1579-4e0d-a69c-a0df449f72cf"/>
+				<text><![CDATA[cel_cli]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="695a90ff-b0ba-4da4-8825-d231e481d69f"/>
+				<textFieldExpression><![CDATA[$F{nome_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="0" width="100" height="20" uuid="7920c78e-89dd-4eb6-b595-3536a3128570"/>
+				<textFieldExpression><![CDATA[$F{email_cli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="227" y="0" width="100" height="20" uuid="6af17de6-d719-4a9a-8287-c9a062eb1daf"/>
+				<textFieldExpression><![CDATA[$F{cel_cli}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="30" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="50" splitType="Stretch"/>
+	</pageFooter>
+	<lastPageFooter>
+		<band height="50" splitType="Stretch"/>
+	</lastPageFooter>
+	<summary>
+		<band height="50" splitType="Stretch"/>
+	</summary>
+</jasperReport>

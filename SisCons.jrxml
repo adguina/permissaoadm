@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SisCons" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="52663a4f-fe72-4efd-8f88-3e88a7e5c9b2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT tb019fichas.*, tb020cli_lojas.nome_cli as cliente,tb021prod_lojas.cor_prod as codigo, tb011lojas.desc_loja as loja
+                      FROM tb019fichas
+
+                      INNER JOIN tb020cli_lojas
+                      ON tb019fichas.id_cliente_fk = tb020cli_lojas.id_cli_lojas
+
+                      INNER JOIN tb021prod_lojas
+                      ON tb019fichas.id_produto_fk = tb021prod_lojas.idprod_loja
+
+                      INNER JOIN tb011lojas
+                      ON tb019fichas.id_loja_fk = tb011lojas.idlojas]]>
+	</queryString>
+	<field name="datacadastro_ficha" class="java.sql.Date"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="codigo" class="java.lang.String"/>
+	<field name="loja" class="java.lang.String"/>
+	<field name="defeito_ficha" class="java.lang.String"/>
+	<field name="id_ficha" class="java.lang.Long"/>
+	<field name="dataenviofabrica_ficha" class="java.sql.Date"/>
+	<field name="datarecebidoloja_ficha" class="java.sql.Date"/>
+	<field name="status_ficha" class="java.lang.String"/>
+	<field name="preco_ficha" class="java.lang.Float"/>
+	<field name="id_cliente_fk" class="java.lang.Integer"/>
+	<field name="id_produto_fk" class="java.lang.Integer"/>
+	<field name="dataretornofabrica_ficha" class="java.sql.Date"/>
+	<field name="status_ficha_situacao" class="java.lang.String"/>
+	<field name="dataretiradacliente_ficha" class="java.sql.Date"/>
+	<field name="cod_prod_ficha" class="java.lang.String"/>
+	<field name="nf_ficha" class="java.lang.String"/>
+	<field name="corpofrente_ficha" class="java.lang.String"/>
+	<field name="corpocosta_ficha" class="java.lang.String"/>
+	<field name="acabamento_ficha" class="java.lang.String"/>
+	<field name="alca_ficha" class="java.lang.String"/>
+	<field name="vivo_ficha" class="java.lang.String"/>
+	<field name="zipper_ficha" class="java.lang.String"/>
+	<field name="placa_ficha" class="java.lang.String"/>
+	<field name="corrente_ficha" class="java.lang.String"/>
+	<field name="termzipper_ficha" class="java.lang.String"/>
+	<field name="ferragem_ficha" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="basefundo_ficha" class="java.lang.String"/>
+	<field name="obs_ficha" class="java.lang.String"/>
+	<field name="id_loja_fk" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="406" splitType="Stretch">
+			<staticText>
+				<reportElement x="213" y="53" width="46" height="20" uuid="56ae1115-d87f-4e8f-8d3b-f203aa347cc4"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loja]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="259" y="53" width="260" height="20" uuid="4e331ed7-d78d-4263-adce-0d564292c540"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{loja}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="73" width="100" height="20" uuid="cd5fb5ed-bb26-4cbb-ae29-4b0041db067e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="73" width="300" height="20" uuid="c6f83cdb-93f5-49bc-b0e3-0938b590efe2"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="156" y="93" width="167" height="34" uuid="a1f4d612-8526-45ab-b49b-04133c26f0d0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PRODUTO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="138" width="44" height="20" uuid="a12c15b2-7447-47f1-9358-6f03770c5e16"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="57" y="138" width="99" height="20" uuid="9b84ccd4-b52e-4b83-85dd-38696b96b046"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{cod_prod_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="177" y="138" width="36" height="20" uuid="402e8c58-6729-4d25-87aa-e9b02b680e10"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="213" y="138" width="320" height="20" uuid="17f3aefc-8390-4ad1-9800-dabe9a2af8ba"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="156" y="0" width="160" height="34" uuid="6522f34d-aba6-40dd-89f0-bff743a70ba1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="202" width="110" height="20" uuid="b214af95-f3e8-4c0f-a5d0-46600d14e7fe"/>
+				<text><![CDATA[Defeito:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="202" width="405" height="20" uuid="79c5a138-5b0b-443f-9de9-ba71628eeae7"/>
+				<textFieldExpression><![CDATA[$F{defeito_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="156" y="168" width="172" height="34" uuid="dc55ca29-2930-47a0-9da3-c16b865c6297"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DEFEITO ALEGADO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="18" y="239" width="81" height="20" uuid="c597bb6e-1cae-442f-8ab9-04d0291b1804"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORPO-FRENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="239" width="69" height="20" uuid="04b81cfb-dec5-410d-856b-b077be666ad8"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{corpofrente_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="259" width="81" height="20" uuid="0cd39f92-a623-42e9-9946-4a99bc8de5a8"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORPO-COSTA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="259" width="69" height="20" uuid="402cf965-1a7b-464e-8822-a639cbf358cb"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{corpocosta_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="438" y="14" width="40" height="20" uuid="a2222ade-17ee-4d13-9761-c824a3e6d626"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FICHA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="478" y="14" width="61" height="20" uuid="50fe9579-af19-4fad-9fa8-d0f89c1e234c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{id_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="279" width="81" height="20" uuid="6a66f472-d7f6-413f-85e4-d4913cc08a41"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ACABAMENTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="279" width="69" height="20" uuid="deaccc3b-d899-47ec-9e6c-200fea055dc9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{acabamento_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="18" y="299" width="81" height="20" uuid="ed58dafd-bf02-4770-8f9b-e986a0561f33"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALÇA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="113" y="299" width="69" height="20" uuid="7065dcb2-6f94-4240-8ce5-96bddad0a280"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{alca_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="239" width="81" height="20" uuid="0b082bcf-763e-47a1-aed5-7356caf72250"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[VIVO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="239" width="69" height="20" uuid="f2558e46-c714-418f-8532-33132fb890e7"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{vivo_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="259" width="81" height="20" uuid="eb67062b-8f38-4956-83f3-f7c905173a34"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ZIPPER]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="259" width="69" height="20" uuid="5cbb91ad-b9dd-4b0f-a270-78afba6ce3cc"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{zipper_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="279" width="81" height="20" uuid="03544f7d-c726-4db8-a1f4-6e340cec26ec"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PLACA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="279" width="69" height="20" uuid="20ee9d12-38ba-425e-8a73-dfe035236a49"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{placa_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="199" y="299" width="81" height="20" uuid="e7f4ce55-3909-43f5-8865-d3a381fac3f8"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CORRENTE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="299" width="69" height="20" uuid="846d30eb-221b-4e53-b7e5-2315e5a21f41"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{corrente_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="370" y="241" width="100" height="20" uuid="737919a5-7bad-4fbb-ac88-cfa69c458bb3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TERMINAL ZIPPER]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="241" width="69" height="20" uuid="5573656b-5e69-4064-a287-a2e5c2a998fc"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{termzipper_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="370" y="261" width="100" height="20" uuid="fe63e9a4-baa1-4536-9982-cd1f29e7be2d"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FERRAGEM]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="261" width="69" height="20" uuid="15f634d5-0745-4b59-8fa5-057197e1b54c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ferragem_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="370" y="281" width="100" height="20" uuid="ca3ddeae-e841-40f1-b94a-fff77c5897ef"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[BASE-FUNDO]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="470" y="281" width="69" height="20" uuid="39c28059-0655-4420-b027-69756174c5a9"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{basefundo_ficha}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="23" y="2" width="105" height="32" uuid="09aba7cd-7a55-4b8b-9ba3-d75b762d3b39"/>
+				<imageExpression><![CDATA["C:\\Users\\Agnaldo\\Documents\\NetBeansProjects\\Relatorios\\LogoMS_NEW.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="13" y="365" width="128" height="20" uuid="0fb04467-24d8-46c1-8722-0cec3ad41697"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[ASSINATURA CLIENTE]]></text>
+			</staticText>
+			<line>
+				<reportElement x="11" y="363" width="145" height="2" uuid="43ca2d8a-ed0a-4eba-b2e7-136997e7b432"/>
+			</line>
+			<staticText>
+				<reportElement x="287" y="343" width="62" height="20" uuid="e777219d-bccf-4ae8-b63e-b1e24f982703"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Observação:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="365" y="349" width="190" height="56" uuid="b8ba5d50-c69e-4c10-883d-241593818a4c"/>
+				<textFieldExpression><![CDATA[$F{obs_ficha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="424" y="73" width="46" height="20" uuid="b6f341c0-6389-4f05-ae19-e7fe43be7e23"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Codigo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="476" y="73" width="43" height="20" uuid="b9674260-25b7-4708-92c5-ed5d69367f85"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{id_cliente_fk}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -14,17 +14,32 @@ import com.guina.model.Tb019fichas;
 import com.guina.model.Tb020clienteLojas;
 import com.guina.model.Tb021prodLojas;
 import com.guina.uteis.uteis;
+import java.awt.Desktop;
 import java.beans.Beans;
+import java.io.File;
+import java.io.InputStream;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.RollbackException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -74,8 +89,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         listUser = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryUser.getResultList());
         queryLog = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb010logsistema t");
         listLog = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLog.getResultList());
-        tb020clienteLojasQuery = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020clienteLojas t");
-        tb020clienteLojasList = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : tb020clienteLojasQuery.getResultList();
+        queryCliente = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020clienteLojas t");
+        listCliente = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : queryCliente.getResultList();
         jpLog = new javax.swing.JPanel();
         txtIdItem = new javax.swing.JTextField();
         txtItem = new javax.swing.JTextField();
@@ -98,6 +113,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         btnNovoLog = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtTabela = new javax.swing.JTextField();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jpDados = new javax.swing.JPanel();
         idFichaLabel = new javax.swing.JLabel();
         dataenviofabricaFichaLabel = new javax.swing.JLabel();
@@ -130,22 +146,50 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         btnPesqLoja = new javax.swing.JButton();
         btnPesqProduto = new javax.swing.JButton();
         btnPesqCliente = new javax.swing.JButton();
-        jpBotoes = new javax.swing.JPanel();
-        btnIncluir = new javax.swing.JButton();
-        btnExcluir = new javax.swing.JButton();
-        btnSalvar = new javax.swing.JButton();
-        btnCancela = new javax.swing.JButton();
-        masterScrollPane = new javax.swing.JScrollPane();
-        tbFicha = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         txtPesq = new javax.swing.JTextField();
         jPanel5 = new javax.swing.JPanel();
         txtPesq_id = new javax.swing.JTextField();
         btnAtualiza = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        masterScrollPane = new javax.swing.JScrollPane();
+        tbFicha = new javax.swing.JTable();
+        btnPdf = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jcZipper = new javax.swing.JComboBox<>();
+        corpofrenteFichaLabel = new javax.swing.JLabel();
+        corpocostaFichaLabel = new javax.swing.JLabel();
+        acabamentoFichaLabel = new javax.swing.JLabel();
+        alcaFichaLabel = new javax.swing.JLabel();
+        vivoFichaLabel = new javax.swing.JLabel();
+        zipperFichaLabel = new javax.swing.JLabel();
+        jcCorpoFrente = new javax.swing.JComboBox<>();
+        jcCorpoCosta = new javax.swing.JComboBox<>();
+        jcVivo = new javax.swing.JComboBox<>();
+        jcAlca = new javax.swing.JComboBox<>();
+        jcAcab = new javax.swing.JComboBox<>();
+        jcPlaca = new javax.swing.JComboBox<>();
+        jcTermZipper = new javax.swing.JComboBox<>();
+        jcFerragem = new javax.swing.JComboBox<>();
+        jcCorrente = new javax.swing.JComboBox<>();
+        jcBaseFundo = new javax.swing.JComboBox<>();
+        placaFichaLabel = new javax.swing.JLabel();
+        correnteFichaLabel = new javax.swing.JLabel();
+        termzipperFichaLabel = new javax.swing.JLabel();
+        ferragemFichaLabel = new javax.swing.JLabel();
+        basefundoFichaLabel = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtObs = new javax.swing.JTextArea();
+        jpBotoes = new javax.swing.JPanel();
+        btnIncluir = new javax.swing.JButton();
+        btnExcluir = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnCancela = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         jpLog.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Log"));
 
@@ -357,9 +401,9 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
 
         dataenviofabricaFichaLabel.setText("Data Envio Fabrica:");
 
-        idProdutoFkLabel.setText("Produto:");
+        idProdutoFkLabel.setText("* Produto:");
 
-        datacadastroFichaLabel.setText("Data Cadastro:");
+        datacadastroFichaLabel.setText("* Data Cadastro:");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.datarecebidolojaFicha}"), dtRecebidoLoja, org.jdesktop.beansbinding.BeanProperty.create("date"));
         bindingGroup.addBinding(binding);
@@ -402,7 +446,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), dtEnvioFab, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        idClienteFkLabel.setText("Cliente:");
+        idClienteFkLabel.setText("* Cliente:");
 
         jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listProd, jcProduto);
         bindingGroup.addBinding(jComboBoxBinding);
@@ -431,7 +475,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             }
         });
 
-        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tb020clienteLojasList, jcCliente);
+        jComboBoxBinding = org.jdesktop.swingbinding.SwingBindings.createJComboBoxBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listCliente, jcCliente);
         bindingGroup.addBinding(jComboBoxBinding);
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.idClienteFk}"), jcCliente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
@@ -457,7 +501,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), dtRetiradaCliente, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
         bindingGroup.addBinding(binding);
 
-        idLojaFkLabel.setText("Loja:");
+        idLojaFkLabel.setText("* Loja:");
 
         defeitoFichaLabel.setText("Defeito Ficha:");
 
@@ -467,7 +511,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.statusFicha}"), jcStatus, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
         bindingGroup.addBinding(binding);
 
-        precoFichaLabel.setText("Custo:         R$");
+        precoFichaLabel.setText("* Custo:  R$");
 
         binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.precoFicha}"), txtPreco, org.jdesktop.beansbinding.BeanProperty.create("text"));
         bindingGroup.addBinding(binding);
@@ -540,7 +584,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                         .addGap(18, 18, 18)
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtId)
-                            .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
                             .addComponent(dtRetornoFabrica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtRecebidoLoja, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(dtEnvioFab, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -549,43 +593,45 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpDadosLayout.createSequentialGroup()
                                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(precoFichaLabel)
-                                    .addComponent(statusFichaSituacaoLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtPreco)
-                                    .addComponent(jcStatusFicha, 0, 91, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(statusFichaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpDadosLayout.createSequentialGroup()
-                                .addComponent(defeitoFichaLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtDefeitoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpDadosLayout.createSequentialGroup()
-                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jpDadosLayout.createSequentialGroup()
                                         .addComponent(idLojaFkLabel)
-                                        .addGap(23, 23, 23)
-                                        .addComponent(jcLoja, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(58, 58, 58)
+                                        .addComponent(jcLoja, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jpDadosLayout.createSequentialGroup()
-                                        .addComponent(idClienteFkLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jcCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosLayout.createSequentialGroup()
-                                        .addComponent(codProdFichaLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(idProdutoFkLabel)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(codProdFichaLabel)
+                                            .addComponent(idClienteFkLabel))
+                                        .addGap(15, 15, 15)
+                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jpDadosLayout.createSequentialGroup()
+                                                .addComponent(txtCodProduto)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(idProdutoFkLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jcCliente, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnPesqProduto)
                                     .addComponent(btnPesqLoja)
-                                    .addComponent(btnPesqCliente))))
+                                    .addComponent(btnPesqCliente)))
+                            .addGroup(jpDadosLayout.createSequentialGroup()
+                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(statusFichaSituacaoLabel)
+                                    .addComponent(precoFichaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(defeitoFichaLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtDefeitoFicha, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jpDadosLayout.createSequentialGroup()
+                                        .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtPreco)
+                                            .addComponent(jcStatusFicha, 0, 91, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(statusFichaLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jcStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 2, Short.MAX_VALUE)))
                         .addGap(18, 18, 18))))
         );
         jpDadosLayout.setVerticalGroup(
@@ -597,11 +643,11 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                         .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(codProdFichaLabel))
+                                .addComponent(codProdFichaLabel)
+                                .addComponent(idFichaLabel))
                             .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(idProdutoFkLabel)
                                 .addComponent(jcProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(idFichaLabel)
                                 .addComponent(btnPesqProduto)
                                 .addComponent(txtCodProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -613,12 +659,12 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                     .addComponent(dtCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(idLojaFkLabel)
                     .addComponent(dataenviofabricaFichaLabel)
                     .addComponent(dtEnvioFab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jcLoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnPesqLoja)))
+                        .addComponent(btnPesqLoja)
+                        .addComponent(idLojaFkLabel)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(dtRecebidoLoja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -643,8 +689,388 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
                     .addGroup(jpDadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(dataretiradaclienteFichaLabel)
                         .addComponent(dtRetiradaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
+
+        jTabbedPane1.addTab("Cadastro", jpDados);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pesquisa...", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
+
+        txtPesq.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesqKeyReleased(evt);
+            }
+        });
+        jPanel4.add(txtPesq);
+
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Codigo.", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
+
+        txtPesq_id.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPesq_idKeyReleased(evt);
+            }
+        });
+        jPanel5.add(txtPesq_id);
+
+        btnAtualiza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/reload.png"))); // NOI18N
+        btnAtualiza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtualizaActionPerformed(evt);
+            }
+        });
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/baixo.jpeg"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listFicha, tbFicha);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idFicha}"));
+        columnBinding.setColumnName("ID");
+        columnBinding.setColumnClass(Long.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${datacadastroFicha}"));
+        columnBinding.setColumnName("Data Cadastro");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idClienteFk}"));
+        columnBinding.setColumnName("Cliente");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idLojaFk}"));
+        columnBinding.setColumnName("Loja");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codProdFicha}"));
+        columnBinding.setColumnName("Codigo Produto");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idProdutoFk}"));
+        columnBinding.setColumnName("Produto");
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataenviofabricaFicha}"));
+        columnBinding.setColumnName("Data Envio F");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${datarecebidolojaFicha}"));
+        columnBinding.setColumnName("Data Receb Loja");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataretornofabricaFicha}"));
+        columnBinding.setColumnName("Data Enviado Loja");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataretiradaclienteFicha}"));
+        columnBinding.setColumnName("Data Recebido Loja");
+        columnBinding.setColumnClass(java.util.Date.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${defeitoFicha}"));
+        columnBinding.setColumnName("Defeito");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${nfFicha}"));
+        columnBinding.setColumnName("NF");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${precoFicha}"));
+        columnBinding.setColumnName("Custo");
+        columnBinding.setColumnClass(Float.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${statusFicha}"));
+        columnBinding.setColumnName("Status Custo");
+        columnBinding.setColumnClass(String.class);
+        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${statusFichaSituacao}"));
+        columnBinding.setColumnName("Status Conserto");
+        columnBinding.setColumnClass(String.class);
+        bindingGroup.addBinding(jTableBinding);
+        jTableBinding.bind();
+        tbFicha.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbFichaMouseClicked(evt);
+            }
+        });
+        masterScrollPane.setViewportView(tbFicha);
+        if (tbFicha.getColumnModel().getColumnCount() > 0) {
+            tbFicha.getColumnModel().getColumn(0).setMinWidth(50);
+            tbFicha.getColumnModel().getColumn(0).setMaxWidth(50);
+            tbFicha.getColumnModel().getColumn(1).setMinWidth(100);
+            tbFicha.getColumnModel().getColumn(1).setMaxWidth(100);
+            tbFicha.getColumnModel().getColumn(2).setMinWidth(200);
+            tbFicha.getColumnModel().getColumn(2).setMaxWidth(250);
+            tbFicha.getColumnModel().getColumn(3).setMinWidth(180);
+            tbFicha.getColumnModel().getColumn(3).setMaxWidth(200);
+            tbFicha.getColumnModel().getColumn(4).setMinWidth(100);
+            tbFicha.getColumnModel().getColumn(4).setMaxWidth(110);
+            tbFicha.getColumnModel().getColumn(5).setMinWidth(220);
+            tbFicha.getColumnModel().getColumn(5).setMaxWidth(280);
+            tbFicha.getColumnModel().getColumn(6).setMinWidth(100);
+            tbFicha.getColumnModel().getColumn(6).setMaxWidth(100);
+            tbFicha.getColumnModel().getColumn(7).setMinWidth(100);
+            tbFicha.getColumnModel().getColumn(7).setMaxWidth(100);
+            tbFicha.getColumnModel().getColumn(8).setMinWidth(100);
+            tbFicha.getColumnModel().getColumn(8).setMaxWidth(100);
+            tbFicha.getColumnModel().getColumn(9).setMinWidth(100);
+            tbFicha.getColumnModel().getColumn(9).setMaxWidth(100);
+            tbFicha.getColumnModel().getColumn(10).setMinWidth(150);
+            tbFicha.getColumnModel().getColumn(10).setMaxWidth(170);
+            tbFicha.getColumnModel().getColumn(11).setMinWidth(80);
+            tbFicha.getColumnModel().getColumn(11).setMaxWidth(80);
+            tbFicha.getColumnModel().getColumn(12).setMinWidth(80);
+            tbFicha.getColumnModel().getColumn(12).setMaxWidth(90);
+            tbFicha.getColumnModel().getColumn(13).setMinWidth(70);
+            tbFicha.getColumnModel().getColumn(13).setMaxWidth(90);
+            tbFicha.getColumnModel().getColumn(14).setMinWidth(70);
+            tbFicha.getColumnModel().getColumn(14).setMaxWidth(90);
+        }
+
+        btnPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/pdf.png"))); // NOI18N
+        btnPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPdfActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(244, 244, 244))
+                    .addComponent(masterScrollPane))
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btnPdf)
+                        .addComponent(btnAtualiza)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jPanel2Layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAtualiza, btnPdf, jButton1});
+
+        jTabbedPane1.addTab("Pesquisa", jPanel2);
+
+        jcZipper.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.zipperFicha}"), jcZipper, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcZipper, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        corpofrenteFichaLabel.setText("CORPO FRENTE:");
+
+        corpocostaFichaLabel.setText("CORPO COSTA:");
+
+        acabamentoFichaLabel.setText("ACABAMENTO:");
+
+        alcaFichaLabel.setText("ALÇA:");
+
+        vivoFichaLabel.setText("VIVO:");
+
+        zipperFichaLabel.setText("ZIPPER:");
+
+        jcCorpoFrente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.corpofrenteFicha}"), jcCorpoFrente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcCorpoFrente, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcCorpoCosta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.corpocostaFicha}"), jcCorpoCosta, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcCorpoCosta, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcVivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.vivoFicha}"), jcVivo, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcVivo, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcAlca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.alcaFicha}"), jcAlca, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcAlca, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcAcab.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.acabamentoFicha}"), jcAcab, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcAcab, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcPlaca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.placaFicha}"), jcPlaca, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcPlaca, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcTermZipper.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.termzipperFicha}"), jcTermZipper, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcTermZipper, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcFerragem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.ferragemFicha}"), jcFerragem, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcFerragem, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcCorrente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.correnteFicha}"), jcCorrente, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcCorrente, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jcBaseFundo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "BOM", "DANIFICADO" }));
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.basefundoFicha}"), jcBaseFundo, org.jdesktop.beansbinding.BeanProperty.create("selectedItem"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), jcBaseFundo, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        placaFichaLabel.setText("PLACA:");
+
+        correnteFichaLabel.setText("FICHA:");
+
+        termzipperFichaLabel.setText("TERMINAL ZIPPER");
+
+        ferragemFichaLabel.setText("FERRAGEM:");
+
+        basefundoFichaLabel.setText("BASE FUNDO");
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Observação", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
+        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
+
+        txtObs.setColumns(20);
+        txtObs.setRows(5);
+
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement.obsFicha}"), txtObs, org.jdesktop.beansbinding.BeanProperty.create("text"));
+        bindingGroup.addBinding(binding);
+        binding = org.jdesktop.beansbinding.Bindings.createAutoBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, tbFicha, org.jdesktop.beansbinding.ELProperty.create("${selectedElement != null}"), txtObs, org.jdesktop.beansbinding.BeanProperty.create("enabled"));
+        bindingGroup.addBinding(binding);
+
+        jScrollPane1.setViewportView(txtObs);
+
+        jPanel7.add(jScrollPane1);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(corpofrenteFichaLabel)
+                    .addComponent(corpocostaFichaLabel)
+                    .addComponent(acabamentoFichaLabel)
+                    .addComponent(alcaFichaLabel)
+                    .addComponent(vivoFichaLabel)
+                    .addComponent(zipperFichaLabel))
+                .addGap(16, 16, 16)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jcZipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcAlca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcAcab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcCorpoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcCorpoCosta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(placaFichaLabel)
+                            .addComponent(correnteFichaLabel)
+                            .addComponent(termzipperFichaLabel)
+                            .addComponent(ferragemFichaLabel)
+                            .addComponent(basefundoFichaLabel))
+                        .addGap(16, 16, 16)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcBaseFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcFerragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jcTermZipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(53, 53, 53)
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(corpofrenteFichaLabel)
+                                    .addComponent(jcCorpoFrente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(corpocostaFichaLabel)
+                                    .addComponent(jcCorpoCosta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(acabamentoFichaLabel)
+                                    .addComponent(jcAcab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(alcaFichaLabel)
+                                    .addComponent(jcAlca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(vivoFichaLabel)
+                                    .addComponent(jcVivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(basefundoFichaLabel)
+                                    .addComponent(jcBaseFundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(placaFichaLabel)
+                                    .addComponent(jcPlaca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(correnteFichaLabel)
+                                    .addComponent(jcCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(termzipperFichaLabel)
+                                    .addComponent(jcTermZipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(ferragemFichaLabel)
+                                    .addComponent(jcFerragem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(zipperFichaLabel)
+                            .addComponent(jcZipper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(72, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Chek List", jPanel6);
 
         jpBotoes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jpBotoes.setLayout(new java.awt.GridLayout(1, 0));
@@ -681,84 +1107,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         });
         jpBotoes.add(btnCancela);
 
-        jTableBinding = org.jdesktop.swingbinding.SwingBindings.createJTableBinding(org.jdesktop.beansbinding.AutoBinding.UpdateStrategy.READ_WRITE, listFicha, tbFicha);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idFicha}"));
-        columnBinding.setColumnName("Registro");
-        columnBinding.setColumnClass(Long.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${codProdFicha}"));
-        columnBinding.setColumnName("Cod Sistema");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idLojaFk}"));
-        columnBinding.setColumnName("Loja");
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idProdutoFk}"));
-        columnBinding.setColumnName("Produto");
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${datacadastroFicha}"));
-        columnBinding.setColumnName("Data Cadastro");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataenviofabricaFicha}"));
-        columnBinding.setColumnName("Data Envio");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataretornofabricaFicha}"));
-        columnBinding.setColumnName("Data Retorno");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${datarecebidolojaFicha}"));
-        columnBinding.setColumnName("Data Rec Loja");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${dataretiradaclienteFicha}"));
-        columnBinding.setColumnName("Data Ret Cliente");
-        columnBinding.setColumnClass(java.util.Date.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${defeitoFicha}"));
-        columnBinding.setColumnName("Defeito Ficha");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${statusFichaSituacao}"));
-        columnBinding.setColumnName("Status Ficha Situacao");
-        columnBinding.setColumnClass(String.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${idClienteFk}"));
-        columnBinding.setColumnName("Cliente");
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${precoFicha}"));
-        columnBinding.setColumnName("Preco Ficha");
-        columnBinding.setColumnClass(Float.class);
-        columnBinding = jTableBinding.addColumnBinding(org.jdesktop.beansbinding.ELProperty.create("${statusFicha}"));
-        columnBinding.setColumnName("Status Ficha");
-        columnBinding.setColumnClass(String.class);
-        bindingGroup.addBinding(jTableBinding);
-        jTableBinding.bind();
-        tbFicha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbFichaMouseClicked(evt);
-            }
-        });
-        masterScrollPane.setViewportView(tbFicha);
-
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pesquisa...", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
-
-        txtPesq.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPesqKeyReleased(evt);
-            }
-        });
-        jPanel4.add(txtPesq);
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Codigo.", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0));
-
-        txtPesq_id.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtPesq_idKeyReleased(evt);
-            }
-        });
-        jPanel5.add(txtPesq_id);
-
-        btnAtualiza.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/reload.png"))); // NOI18N
-        btnAtualiza.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizaActionPerformed(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("Preenchido Fabrica");
@@ -769,60 +1119,35 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         jLabel8.setText("Preenchido Automatico");
         jPanel1.add(jLabel8);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/baixo.jpeg"))); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jpDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 315, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAtualiza, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(masterScrollPane))
-                .addContainerGap())
+                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jpDados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnAtualiza)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1))
         );
 
         bindingGroup.bind();
 
-        setSize(new java.awt.Dimension(867, 536));
+        setSize(new java.awt.Dimension(867, 403));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -867,27 +1192,27 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelaActionPerformed
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
-        if(verificarCampos()){      
-        btnNovoLog.doClick();
-        Dados();//Preenche dados
-        User();//Pega Usuario
-        btnSalvarLog.doClick();//Salva na tabela de log
-        btnCancelaLog.doClick();//Atualiza tabela de Log
+        if (verificarCampos()) {
+            btnNovoLog.doClick();
+            Dados();//Preenche dados
+            User();//Pega Usuario
+            btnSalvarLog.doClick();//Salva na tabela de log
+            btnCancelaLog.doClick();//Atualiza tabela de Log
 
-        try {
-            em.getTransaction().commit();
-            em.getTransaction().begin();
-        } catch (RollbackException rex) {
-            rex.printStackTrace();
-            em.getTransaction().begin();
-            List<com.guina.model.Tb019fichas> merged = new ArrayList<com.guina.model.Tb019fichas>(listFicha.size());
-            for (com.guina.model.Tb019fichas t : listFicha) {
-                merged.add(em.merge(t));
+            try {
+                em.getTransaction().commit();
+                em.getTransaction().begin();
+            } catch (RollbackException rex) {
+                rex.printStackTrace();
+                em.getTransaction().begin();
+                List<com.guina.model.Tb019fichas> merged = new ArrayList<com.guina.model.Tb019fichas>(listFicha.size());
+                for (com.guina.model.Tb019fichas t : listFicha) {
+                    merged.add(em.merge(t));
+                }
+                listFicha.clear();
+                listFicha.addAll(merged);
             }
-            listFicha.clear();
-            listFicha.addAll(merged);
         }
-     }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void txtUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUserFocusGained
@@ -985,8 +1310,8 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         String real = txtPreco.getText();
         String valor = real.replace(",", ".");
         txtPreco.setText(valor);
-        
-         if (Integer.parseInt(txtPreco.getText()) <= 0) {
+
+        if (Integer.parseInt(txtPreco.getText()) <= 0) {
             jcStatus.setSelectedItem("ISENTO");
         } else {
             jcStatus.setSelectedItem("CUSTO");
@@ -1006,24 +1331,81 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     }//GEN-LAST:event_jcProdutoFocusGained
 
     private void jcClienteFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jcClienteFocusGained
-       ///Garante Salvar o Codigo
+        ///Garante Salvar o Codigo
         String cod = (jcProduto.getSelectedItem().toString()).trim();
         int tam = cod.length();
         String cod1 = cod.substring(tam - 13);
         txtCodProduto.setText(cod1);
-       ///////////////////////////////////////////////////////////////////////////////        // TODO add your handling code here:
+        ///////////////////////////////////////////////////////////////////////////////        // TODO add your handling code here:
     }//GEN-LAST:event_jcClienteFocusGained
 
     private void txtDefeitoFichaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDefeitoFichaKeyReleased
-      uteis.maiscula(evt);        // TODO add your handling code here:
+        uteis.maiscula(evt);        // TODO add your handling code here:
     }//GEN-LAST:event_txtDefeitoFichaKeyReleased
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         queryFicha = em.createQuery("SELECT t FROM Tb019fichas t WHERE t.idProdutoFk.codsamProd = :cod");
-        queryFicha.setParameter("cod",txtPesq_id.getText());
+        queryFicha.setParameter("cod", txtPesq_id.getText());
         listFicha.clear();
         listFicha.addAll(queryFicha.getResultList());        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
+        String caminho = new File("SisCons.jrxml").getAbsolutePath();
+        try {
+            JasperReport rel = JasperCompileManager.compileReport(caminho);
+            JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(listFicha,false);
+            JasperPrint print = JasperFillManager.fillReport(rel,new HashMap(),dados);
+            JasperViewer view = new JasperViewer(print,false);
+            view.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmFichaConsT019.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        
+        
+        
+        
+        /*  try {
+             JRResultSetDataSource dados = new JRResultSetDataSource((ResultSet) listFicha);
+             InputStream url = this.getClass().getClassLoader().getResourceAsStream("Relatorio/SisCons.jrxml");
+             JasperPrint print = JasperFillManager.fillReport(url, new HashMap(), dados);
+             JasperExportManager.exportReportToPdfFile(print,"C:/Users/SUPORTE/Documents/NetBeansProjects/controlpermissao/rel/conserto.pdf");
+             
+             File file = new File("C:/Users/SUPORTE/Documents/NetBeansProjects/controlpermissao/rel/conserto.pdf");
+             try {
+                 Desktop.getDesktop().open(file);
+             } catch (Exception e) {
+                 JOptionPane.showConfirmDialog(null, e);
+             }
+             file.deleteOnExit();
+            
+        } catch (Exception e){
+        }*/
+        
+//        
+//         try {
+//            String caminho = new File("SisCons.jrxml").getAbsolutePath();
+//            JasperReport rel = JasperCompileManager.compileReport(caminho);
+//            
+//            JRResultSetDataSource dados = new JRResultSetDataSource(listFicha,false);
+//            JasperPrint print = JasperFillManager.fillReport(rel, new HashMap(), dados);
+//            JasperViewer view = new JasperViewer(print);
+//            view.setVisible(true);
+//            view.setAlwaysOnTop(true);
+//        } catch (Exception ex) {
+//            Logger.getLogger(FrmFichaConsT019.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+
+       /* String src = "Relatorio/SisCons.jasper";
+        JasperPrint jp = null;
+        try {
+            jp = JasperFillManager.fillReport(src,null);
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
+        JasperViewer view = new JasperViewer(jp,false);
+        view.setVisible(true); */
+    }//GEN-LAST:event_btnPdfActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1069,18 +1451,25 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ITEM;
+    private javax.swing.JLabel acabamentoFichaLabel;
+    private javax.swing.JLabel alcaFichaLabel;
+    private javax.swing.JLabel basefundoFichaLabel;
     private javax.swing.JButton btnAtualiza;
     public javax.swing.JButton btnCancela;
     private javax.swing.JButton btnCancelaLog;
     public javax.swing.JButton btnExcluir;
     public javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnNovoLog;
+    private javax.swing.JButton btnPdf;
     private javax.swing.JButton btnPesqCliente;
     private javax.swing.JButton btnPesqLoja;
     private javax.swing.JButton btnPesqProduto;
     public javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarLog;
     private javax.swing.JLabel codProdFichaLabel;
+    private javax.swing.JLabel corpocostaFichaLabel;
+    private javax.swing.JLabel corpofrenteFichaLabel;
+    private javax.swing.JLabel correnteFichaLabel;
     private javax.swing.JLabel datacadastroFichaLabel;
     private javax.swing.JLabel dataenviofabricaFichaLabel;
     private javax.swing.JLabel datarecebidolojaFichaLabel;
@@ -1093,6 +1482,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private com.toedter.calendar.JDateChooser dtRetiradaCliente;
     private com.toedter.calendar.JDateChooser dtRetornoFabrica;
     private javax.persistence.EntityManager em;
+    private javax.swing.JLabel ferragemFichaLabel;
     private javax.swing.JLabel idClienteFkLabel;
     private javax.swing.JLabel idFichaLabel;
     private javax.swing.JLabel idLojaFkLabel;
@@ -1107,17 +1497,34 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JComboBox<String> jcAcab;
+    private javax.swing.JComboBox<String> jcAlca;
+    private javax.swing.JComboBox<String> jcBaseFundo;
     private javax.swing.JComboBox<String> jcCliente;
+    private javax.swing.JComboBox<String> jcCorpoCosta;
+    private javax.swing.JComboBox<String> jcCorpoFrente;
+    private javax.swing.JComboBox<String> jcCorrente;
+    private javax.swing.JComboBox<String> jcFerragem;
     private javax.swing.JComboBox<String> jcLoja;
+    private javax.swing.JComboBox<String> jcPlaca;
     private javax.swing.JComboBox<String> jcProduto;
     private javax.swing.JComboBox<String> jcStatus;
     private javax.swing.JComboBox<String> jcStatusFicha;
+    private javax.swing.JComboBox<String> jcTermZipper;
+    private javax.swing.JComboBox<String> jcVivo;
+    private javax.swing.JComboBox<String> jcZipper;
     private javax.swing.JPanel jpBotoes;
     private javax.swing.JPanel jpDados;
     private javax.swing.JPanel jpLog;
+    private java.util.List<com.guina.model.Tb020clienteLojas> listCliente;
     private java.util.List<com.guina.model.Tb019fichas> listFicha;
     private java.util.List<com.guina.model.Tb010logsistema> listLog;
     private java.util.List<com.guina.model.Tb011lojas> listLoja;
@@ -1125,7 +1532,9 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private java.util.List<com.guina.model.Tb001user> listUser;
     private javax.swing.JScrollPane masterScrollPane;
     private javax.swing.JScrollPane masterScrollPane1;
+    private javax.swing.JLabel placaFichaLabel;
     private javax.swing.JLabel precoFichaLabel;
+    private javax.persistence.Query queryCliente;
     private javax.persistence.Query queryFicha;
     private javax.persistence.Query queryLog;
     private javax.persistence.Query queryLoja;
@@ -1133,10 +1542,9 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.persistence.Query queryUser;
     private javax.swing.JLabel statusFichaLabel;
     private javax.swing.JLabel statusFichaSituacaoLabel;
-    private java.util.List<com.guina.model.Tb020clienteLojas> tb020clienteLojasList;
-    private javax.persistence.Query tb020clienteLojasQuery;
     public javax.swing.JTable tbFicha;
     public javax.swing.JTable tbLog;
+    private javax.swing.JLabel termzipperFichaLabel;
     private javax.swing.JTextField txtAcao;
     private javax.swing.JTextField txtCodProduto;
     private javax.swing.JTextField txtData;
@@ -1145,12 +1553,15 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIdItem;
     private javax.swing.JTextField txtItem;
+    private javax.swing.JTextArea txtObs;
     public javax.swing.JTextField txtPesq;
     public javax.swing.JTextField txtPesq_id;
     private javax.swing.JTextField txtPreco;
     private javax.swing.JTextField txtTabela;
     public javax.swing.JTextField txtUser;
     public javax.swing.JLabel txtUsuario;
+    private javax.swing.JLabel vivoFichaLabel;
+    private javax.swing.JLabel zipperFichaLabel;
     private org.jdesktop.beansbinding.BindingGroup bindingGroup;
     // End of variables declaration//GEN-END:variables
 ///////////////FUNÇOES DO SISTEMA/////////////////////////////////
@@ -1211,7 +1622,7 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
             txtUser.setText(args[0]);
         }
     }
-    
+
     public boolean verificarCampos() {
         if (dtCadastro.getDate() == null) {
             JOptionPane.showMessageDialog(null, "Campo Data Cadastro Obrigatorio.", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -1241,4 +1652,5 @@ public class FrmFichaConsT019 extends javax.swing.JDialog {
         return true;
 
     }
+
 }

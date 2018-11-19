@@ -6,22 +6,30 @@
 package com.guina.view;
 
 import com.guina.model.Tb001user;
-import com.guina.model.Tb012vendas;
-import com.guina.model.Tb019fichas;
 import com.guina.model.Tb020clienteLojas;
 import com.guina.uteis.uteis;
 import com.guina.viacep.ViaCEP;
 import com.guina.viacep.ViaCEPException;
 import java.beans.Beans;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.persistence.RollbackException;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -126,6 +134,7 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
         tbCliLojas = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         txtPesq = new javax.swing.JTextField();
+        btnPdf = new javax.swing.JButton();
 
         jpLog.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Log"));
 
@@ -209,7 +218,7 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
         jLabel6.setText("ITEM_");
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel3.setLayout(new java.awt.GridLayout());
+        jPanel3.setLayout(new java.awt.GridLayout(1, 0));
 
         btnSalvarLog.setText("SalvarLog");
         btnSalvarLog.addActionListener(new java.awt.event.ActionListener() {
@@ -635,7 +644,7 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
         );
 
         jpBotoes.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jpBotoes.setLayout(new java.awt.GridLayout());
+        jpBotoes.setLayout(new java.awt.GridLayout(1, 0));
 
         btnIncluir.setText("Novo");
         btnIncluir.addActionListener(new java.awt.event.ActionListener() {
@@ -719,7 +728,7 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
         masterScrollPane.setViewportView(tbCliLojas);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Pesquisa...", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        jPanel4.setLayout(new java.awt.GridLayout());
+        jPanel4.setLayout(new java.awt.GridLayout(1, 0));
 
         txtPesq.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -727,6 +736,13 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
             }
         });
         jPanel4.add(txtPesq);
+
+        btnPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/pdf.png"))); // NOI18N
+        btnPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPdfActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -739,7 +755,9 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jpDados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -751,9 +769,10 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jpBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPdf))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addComponent(masterScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -923,6 +942,60 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
         listCliLoja.addAll(queryCliLoja.getResultList());  // TODO add your handling code here:
     }//GEN-LAST:event_txtPesqKeyReleased
 
+    private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
+        String caminho = new File("Cliente.jrxml").getAbsolutePath();
+        try {
+            JasperReport rel = JasperCompileManager.compileReport(caminho);
+            JRBeanCollectionDataSource dados = new JRBeanCollectionDataSource(listCliLoja,false);
+            JasperPrint print = JasperFillManager.fillReport(rel,new HashMap(),dados);
+            JasperViewer view = new JasperViewer(print,false);
+            view.setVisible(true);
+        } catch (Exception ex) {
+            Logger.getLogger(FrmCliLojas020.class.getName()).log(Level.SEVERE,null,ex);
+        }
+
+        /*  try {
+            JRResultSetDataSource dados = new JRResultSetDataSource((ResultSet) listFicha);
+            InputStream url = this.getClass().getClassLoader().getResourceAsStream("Relatorio/SisCons.jrxml");
+            JasperPrint print = JasperFillManager.fillReport(url, new HashMap(), dados);
+            JasperExportManager.exportReportToPdfFile(print,"C:/Users/SUPORTE/Documents/NetBeansProjects/controlpermissao/rel/conserto.pdf");
+
+            File file = new File("C:/Users/SUPORTE/Documents/NetBeansProjects/controlpermissao/rel/conserto.pdf");
+            try {
+                Desktop.getDesktop().open(file);
+            } catch (Exception e) {
+                JOptionPane.showConfirmDialog(null, e);
+            }
+            file.deleteOnExit();
+
+        } catch (Exception e){
+        }*/
+
+        //
+        //         try {
+            //            String caminho = new File("SisCons.jrxml").getAbsolutePath();
+            //            JasperReport rel = JasperCompileManager.compileReport(caminho);
+            //
+            //            JRResultSetDataSource dados = new JRResultSetDataSource(listFicha,false);
+            //            JasperPrint print = JasperFillManager.fillReport(rel, new HashMap(), dados);
+            //            JasperViewer view = new JasperViewer(print);
+            //            view.setVisible(true);
+            //            view.setAlwaysOnTop(true);
+            //        } catch (Exception ex) {
+            //            Logger.getLogger(FrmFichaConsT019.class.getName()).log(Level.SEVERE, null, ex);
+            //        }
+
+        /* String src = "Relatorio/SisCons.jasper";
+        JasperPrint jp = null;
+        try {
+            jp = JasperFillManager.fillReport(src,null);
+        } catch (Exception e) {
+            System.out.println("Error: "+e);
+        }
+        JasperViewer view = new JasperViewer(jp,false);
+        view.setVisible(true); */
+    }//GEN-LAST:event_btnPdfActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -973,6 +1046,7 @@ public class FrmCliLojas020 extends javax.swing.JDialog {
     public javax.swing.JButton btnExcluir;
     public javax.swing.JButton btnIncluir;
     private javax.swing.JButton btnNovoLog;
+    private javax.swing.JButton btnPdf;
     public javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnSalvarLog;
     private javax.swing.JLabel celCliLabel;

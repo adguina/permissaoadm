@@ -5,7 +5,6 @@
  */
 package com.guina.model;
 
-import com.guina.model.Tb011lojas;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
@@ -44,7 +43,20 @@ import javax.persistence.Transient;
     , @NamedQuery(name = "Tb019fichas.findByStatusFichaSituacao", query = "SELECT t FROM Tb019fichas t WHERE t.statusFichaSituacao = :statusFichaSituacao")
     , @NamedQuery(name = "Tb019fichas.findByDefeitoFicha", query = "SELECT t FROM Tb019fichas t WHERE t.defeitoFicha = :defeitoFicha")
     , @NamedQuery(name = "Tb019fichas.findByDataretiradaclienteFicha", query = "SELECT t FROM Tb019fichas t WHERE t.dataretiradaclienteFicha = :dataretiradaclienteFicha")
-    , @NamedQuery(name = "Tb019fichas.findByCodProdFicha", query = "SELECT t FROM Tb019fichas t WHERE t.codProdFicha = :codProdFicha")})
+    , @NamedQuery(name = "Tb019fichas.findByCodProdFicha", query = "SELECT t FROM Tb019fichas t WHERE t.codProdFicha = :codProdFicha")
+    , @NamedQuery(name = "Tb019fichas.findByNfFicha", query = "SELECT t FROM Tb019fichas t WHERE t.nfFicha = :nfFicha")
+    , @NamedQuery(name = "Tb019fichas.findByCorpofrenteFicha", query = "SELECT t FROM Tb019fichas t WHERE t.corpofrenteFicha = :corpofrenteFicha")
+    , @NamedQuery(name = "Tb019fichas.findByCorpocostaFicha", query = "SELECT t FROM Tb019fichas t WHERE t.corpocostaFicha = :corpocostaFicha")
+    , @NamedQuery(name = "Tb019fichas.findByAcabamentoFicha", query = "SELECT t FROM Tb019fichas t WHERE t.acabamentoFicha = :acabamentoFicha")
+    , @NamedQuery(name = "Tb019fichas.findByAlcaFicha", query = "SELECT t FROM Tb019fichas t WHERE t.alcaFicha = :alcaFicha")
+    , @NamedQuery(name = "Tb019fichas.findByVivoFicha", query = "SELECT t FROM Tb019fichas t WHERE t.vivoFicha = :vivoFicha")
+    , @NamedQuery(name = "Tb019fichas.findByZipperFicha", query = "SELECT t FROM Tb019fichas t WHERE t.zipperFicha = :zipperFicha")
+    , @NamedQuery(name = "Tb019fichas.findByPlacaFicha", query = "SELECT t FROM Tb019fichas t WHERE t.placaFicha = :placaFicha")
+    , @NamedQuery(name = "Tb019fichas.findByCorrenteFicha", query = "SELECT t FROM Tb019fichas t WHERE t.correnteFicha = :correnteFicha")
+    , @NamedQuery(name = "Tb019fichas.findByTermzipperFicha", query = "SELECT t FROM Tb019fichas t WHERE t.termzipperFicha = :termzipperFicha")
+    , @NamedQuery(name = "Tb019fichas.findByFerragemFicha", query = "SELECT t FROM Tb019fichas t WHERE t.ferragemFicha = :ferragemFicha")
+    , @NamedQuery(name = "Tb019fichas.findByBasefundoFicha", query = "SELECT t FROM Tb019fichas t WHERE t.basefundoFicha = :basefundoFicha")
+    , @NamedQuery(name = "Tb019fichas.findByObsFicha", query = "SELECT t FROM Tb019fichas t WHERE t.obsFicha = :obsFicha")})
 public class Tb019fichas implements Serializable {
 
     @Transient
@@ -55,6 +67,7 @@ public class Tb019fichas implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_ficha")
     private Long idFicha;
+    
     
     @OneToOne
     @JoinColumn(name = "id_loja_fk")
@@ -82,8 +95,7 @@ public class Tb019fichas implements Serializable {
     @OneToOne
     @JoinColumn(name = "id_produto_fk")
     private Tb021prodLojas idProdutoFk;
-    
-    
+      
     @Column(name = "dataretornofabrica_ficha")
     @Temporal(TemporalType.DATE)
     private Date dataretornofabricaFicha;
@@ -96,6 +108,32 @@ public class Tb019fichas implements Serializable {
     private Date dataretiradaclienteFicha;
     @Column(name = "cod_prod_ficha")
     private String codProdFicha;
+    @Column(name = "nf_ficha")
+    private String nfFicha;
+    @Column(name = "corpofrente_ficha")
+    private String corpofrenteFicha;
+    @Column(name = "corpocosta_ficha")
+    private String corpocostaFicha;
+    @Column(name = "acabamento_ficha")
+    private String acabamentoFicha;
+    @Column(name = "alca_ficha")
+    private String alcaFicha;
+    @Column(name = "vivo_ficha")
+    private String vivoFicha;
+    @Column(name = "zipper_ficha")
+    private String zipperFicha;
+    @Column(name = "placa_ficha")
+    private String placaFicha;
+    @Column(name = "corrente_ficha")
+    private String correnteFicha;
+    @Column(name = "termzipper_ficha")
+    private String termzipperFicha;
+    @Column(name = "ferragem_ficha")
+    private String ferragemFicha;
+    @Column(name = "basefundo_ficha")
+    private String basefundoFicha;
+    @Column(name = "obs_ficha")
+    private String obsFicha;
 
     public Tb019fichas() {
     }
@@ -244,6 +282,136 @@ public class Tb019fichas implements Serializable {
         changeSupport.firePropertyChange("codProdFicha", oldCodProdFicha, codProdFicha);
     }
 
+    public String getNfFicha() {
+        return nfFicha;
+    }
+
+    public void setNfFicha(String nfFicha) {
+        String oldNfFicha = this.nfFicha;
+        this.nfFicha = nfFicha;
+        changeSupport.firePropertyChange("nfFicha", oldNfFicha, nfFicha);
+    }
+
+    public String getCorpofrenteFicha() {
+        return corpofrenteFicha;
+    }
+
+    public void setCorpofrenteFicha(String corpofrenteFicha) {
+        String oldCorpofrenteFicha = this.corpofrenteFicha;
+        this.corpofrenteFicha = corpofrenteFicha;
+        changeSupport.firePropertyChange("corpofrenteFicha", oldCorpofrenteFicha, corpofrenteFicha);
+    }
+
+    public String getCorpocostaFicha() {
+        return corpocostaFicha;
+    }
+
+    public void setCorpocostaFicha(String corpocostaFicha) {
+        String oldCorpocostaFicha = this.corpocostaFicha;
+        this.corpocostaFicha = corpocostaFicha;
+        changeSupport.firePropertyChange("corpocostaFicha", oldCorpocostaFicha, corpocostaFicha);
+    }
+
+    public String getAcabamentoFicha() {
+        return acabamentoFicha;
+    }
+
+    public void setAcabamentoFicha(String acabamentoFicha) {
+        String oldAcabamentoFicha = this.acabamentoFicha;
+        this.acabamentoFicha = acabamentoFicha;
+        changeSupport.firePropertyChange("acabamentoFicha", oldAcabamentoFicha, acabamentoFicha);
+    }
+
+    public String getAlcaFicha() {
+        return alcaFicha;
+    }
+
+    public void setAlcaFicha(String alcaFicha) {
+        String oldAlcaFicha = this.alcaFicha;
+        this.alcaFicha = alcaFicha;
+        changeSupport.firePropertyChange("alcaFicha", oldAlcaFicha, alcaFicha);
+    }
+
+    public String getVivoFicha() {
+        return vivoFicha;
+    }
+
+    public void setVivoFicha(String vivoFicha) {
+        String oldVivoFicha = this.vivoFicha;
+        this.vivoFicha = vivoFicha;
+        changeSupport.firePropertyChange("vivoFicha", oldVivoFicha, vivoFicha);
+    }
+
+    public String getZipperFicha() {
+        return zipperFicha;
+    }
+
+    public void setZipperFicha(String zipperFicha) {
+        String oldZipperFicha = this.zipperFicha;
+        this.zipperFicha = zipperFicha;
+        changeSupport.firePropertyChange("zipperFicha", oldZipperFicha, zipperFicha);
+    }
+
+    public String getPlacaFicha() {
+        return placaFicha;
+    }
+
+    public void setPlacaFicha(String placaFicha) {
+        String oldPlacaFicha = this.placaFicha;
+        this.placaFicha = placaFicha;
+        changeSupport.firePropertyChange("placaFicha", oldPlacaFicha, placaFicha);
+    }
+
+    public String getCorrenteFicha() {
+        return correnteFicha;
+    }
+
+    public void setCorrenteFicha(String correnteFicha) {
+        String oldCorrenteFicha = this.correnteFicha;
+        this.correnteFicha = correnteFicha;
+        changeSupport.firePropertyChange("correnteFicha", oldCorrenteFicha, correnteFicha);
+    }
+
+    public String getTermzipperFicha() {
+        return termzipperFicha;
+    }
+
+    public void setTermzipperFicha(String termzipperFicha) {
+        String oldTermzipperFicha = this.termzipperFicha;
+        this.termzipperFicha = termzipperFicha;
+        changeSupport.firePropertyChange("termzipperFicha", oldTermzipperFicha, termzipperFicha);
+    }
+
+    public String getFerragemFicha() {
+        return ferragemFicha;
+    }
+
+    public void setFerragemFicha(String ferragemFicha) {
+        String oldFerragemFicha = this.ferragemFicha;
+        this.ferragemFicha = ferragemFicha;
+        changeSupport.firePropertyChange("ferragemFicha", oldFerragemFicha, ferragemFicha);
+    }
+
+    public String getBasefundoFicha() {
+        return basefundoFicha;
+    }
+
+    public void setBasefundoFicha(String basefundoFicha) {
+        String oldBasefundoFicha = this.basefundoFicha;
+        this.basefundoFicha = basefundoFicha;
+        changeSupport.firePropertyChange("basefundoFicha", oldBasefundoFicha, basefundoFicha);
+    }
+
+    public String getObsFicha() {
+        return obsFicha;
+    }
+
+    public void setObsFicha(String obsFicha) {
+        String oldObsFicha = this.obsFicha;
+        this.obsFicha = obsFicha;
+        changeSupport.firePropertyChange("obsFicha", oldObsFicha, obsFicha);
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -266,7 +434,7 @@ public class Tb019fichas implements Serializable {
 
     @Override
     public String toString() {
-        return "com.guina.view.Tb019fichas[ idFicha=" + idFicha + " ]";
+        return this.idProdutoFk.getCorProd()+"--"+this.codProdFicha;
     }
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

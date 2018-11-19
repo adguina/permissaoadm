@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4b319c22-88c8-44cf-b7d9-cb92283519c3">
+	<queryString language="SQL">
+		<![CDATA[select * from tb019fichas]]>
+	</queryString>
+	<field name="id_ficha" class="java.lang.Long"/>
+	<field name="id_loja_fk" class="java.lang.Integer"/>
+	<field name="datacadastro_ficha" class="java.sql.Date"/>
+	<field name="dataenviofabrica_ficha" class="java.sql.Date"/>
+	<field name="datarecebidoloja_ficha" class="java.sql.Date"/>
+	<field name="status_ficha" class="java.lang.String"/>
+	<field name="preco_ficha" class="java.lang.Float"/>
+	<field name="id_cliente_fk" class="java.lang.Integer"/>
+	<field name="id_produto_fk" class="java.lang.Integer"/>
+	<field name="dataretornofabrica_ficha" class="java.sql.Date"/>
+	<field name="status_ficha_situacao" class="java.lang.String"/>
+	<field name="defeito_ficha" class="java.lang.String"/>
+	<field name="dataretiradacliente_ficha" class="java.sql.Date"/>
+	<field name="cod_prod_ficha" class="java.lang.String"/>
+	<field name="nf_ficha" class="java.lang.String"/>
+	<field name="corpofrente_ficha" class="java.lang.String"/>
+	<field name="corpocosta_ficha" class="java.lang.String"/>
+	<field name="acabamento_ficha" class="java.lang.String"/>
+	<field name="alca_ficha" class="java.lang.String"/>
+	<field name="vivo_ficha" class="java.lang.String"/>
+	<field name="zipper_ficha" class="java.lang.String"/>
+	<field name="placa_ficha" class="java.lang.String"/>
+	<field name="corrente_ficha" class="java.lang.String"/>
+	<field name="termzipper_ficha" class="java.lang.String"/>
+	<field name="ferragem_ficha" class="java.lang.String">
+		<fieldDescription><![CDATA[
+]]></fieldDescription>
+	</field>
+	<field name="basefundo_ficha" class="java.lang.String"/>
+	<field name="obs_ficha" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
