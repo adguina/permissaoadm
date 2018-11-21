@@ -47,7 +47,7 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class FrmFichaConsT019 extends javax.swing.JDialog {
 
-    //////nome da tabela////////
+    /////nome da tabela////////
     String tb = "tb019fichas";
     String acao, aux;// aux variavel da funcao Id
     int n, novo; // variavel da funcao Id
