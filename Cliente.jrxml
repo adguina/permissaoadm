@@ -37,39 +37,60 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="50" splitType="Stretch"/>
+		<band height="50" splitType="Stretch">
+			<staticText>
+				<reportElement x="182" y="14" width="176" height="20" uuid="203ba224-e0dc-499b-ba23-039db92216fa"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Relatorios de Clientes]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="435" y="30" width="100" height="20" uuid="3b6ea2f0-19cc-435f-a1f4-2224ae2c83ae"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
 	<pageHeader>
 		<band height="50" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="30" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="560cf553-a451-46e7-afae-cdf85467d356"/>
-				<text><![CDATA[nome_cli]]></text>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Cliente]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="115" y="0" width="100" height="20" uuid="442b513d-6966-46d0-ab6e-46f265867794"/>
-				<text><![CDATA[email_cli]]></text>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Email]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="227" y="0" width="100" height="20" uuid="205c293d-1579-4e0d-a69c-a0df449f72cf"/>
-				<text><![CDATA[cel_cli]]></text>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Celular]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="100" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="100" height="20" uuid="695a90ff-b0ba-4da4-8825-d231e481d69f"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{nome_cli}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="115" y="0" width="100" height="20" uuid="7920c78e-89dd-4eb6-b595-3536a3128570"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{email_cli}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="227" y="0" width="100" height="20" uuid="6af17de6-d719-4a9a-8287-c9a062eb1daf"/>
+				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{cel_cli}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -78,7 +99,15 @@ FROM
 		<band height="30" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
-		<band height="50" splitType="Stretch"/>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="422" y="30" width="100" height="20" uuid="dc33418a-44a0-4d76-a3d6-4a31ffe12ce7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
 	</pageFooter>
 	<lastPageFooter>
 		<band height="50" splitType="Stretch"/>

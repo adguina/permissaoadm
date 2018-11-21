@@ -9,6 +9,10 @@ import com.guina.model.Tb002acesso;
 import java.beans.Beans;
 import java.util.List;
 import javax.swing.JOptionPane;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -60,6 +64,8 @@ public class frmPrincipal extends javax.swing.JFrame {
         queryLogado = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb009logados t");
         listLogado = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryLogado.getResultList());
         jpSeparador = new javax.swing.JPanel();
+        queryCliLoja = java.beans.Beans.isDesignTime() ? null : em.createQuery("SELECT t FROM Tb020clienteLojas t");
+        listCliLoja = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : org.jdesktop.observablecollections.ObservableCollections.observableList(queryCliLoja.getResultList());
         jpMenu = new javax.swing.JPanel();
         btnFornecedor = new javax.swing.JButton();
         btnUsuario = new javax.swing.JButton();
@@ -86,6 +92,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        menuClientes = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -216,7 +223,7 @@ public class frmPrincipal extends javax.swing.JFrame {
 
         jpConserto.setBackground(new java.awt.Color(153, 204, 255));
         jpConserto.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Cadastro Conserto", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP));
-        jpConserto.setLayout(new java.awt.GridLayout());
+        jpConserto.setLayout(new java.awt.GridLayout(1, 0));
 
         btnFicha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/guina/icone/ficha.png"))); // NOI18N
         btnFicha.setText("Ficha");
@@ -304,6 +311,16 @@ public class frmPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Relatorios");
+
+        menuClientes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.ALT_MASK));
+        menuClientes.setText("Clientes");
+        menuClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuClientesActionPerformed(evt);
+            }
+        });
+        jMenu2.add(menuClientes);
+
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("T.I");
@@ -1545,6 +1562,21 @@ public class frmPrincipal extends javax.swing.JFrame {
       btnCli.doClick();        // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem13ActionPerformed
 
+    private void menuClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuClientesActionPerformed
+      int confirma = JOptionPane.showConfirmDialog(null,"Imprimir Relatorio de Clientes","Atencao",
+              JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION) {
+            try {
+                JRBeanCollectionDataSource jrbcds = new JRBeanCollectionDataSource(listCliLoja,false);
+                JasperPrint print = JasperFillManager.fillReport("Clientes.jasper",null,jrbcds);
+                JasperViewer view = new JasperViewer(print,false);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e);
+            }
+       
+        }
+    }//GEN-LAST:event_menuClientesActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1622,14 +1654,17 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jpSeparador;
     private java.awt.Panel jpanelInferior;
     private java.util.List<com.guina.model.Tb002acesso> list;
+    private java.util.List<com.guina.model.Tb020clienteLojas> listCliLoja;
     private java.util.List<com.guina.model.Tb009logados> listLogado;
     private javax.swing.JMenuItem menuCadFichaConserto;
+    private javax.swing.JMenuItem menuClientes;
     private javax.swing.JMenu menuConserto;
     private javax.swing.JMenuItem menuLog;
     private javax.swing.JMenuItem menuLoja;
     private javax.swing.JMenuItem menuVenda;
     private javax.swing.JMenuItem menuVendedor;
     private javax.persistence.Query query;
+    private javax.persistence.Query queryCliLoja;
     private javax.persistence.Query queryLogado;
     private javax.swing.JLabel txtEditar;
     private javax.swing.JLabel txtExcluir;

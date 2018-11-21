@@ -142,7 +142,7 @@ public class RelatorioCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPesqKeyReleased
 
     private void btnPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPdfActionPerformed
-        String url = new File("Cliente.jrxml").getAbsolutePath();
+        String url = new File("Clientes.jrxml").getAbsolutePath();
         try {
             JasperReport rel = JasperCompileManager.compileReport(url);
             JRBeanCollectionDataSource jrbcds = new JRBeanCollectionDataSource(listCliLoja, false);
